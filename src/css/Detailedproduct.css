@@ -1,0 +1,106 @@
+.product-card {
+  margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 70vh;
+    position: relative;
+    top: 20px;
+    left: 110px;
+    margin-bottom:100px ;
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
+    border: none;
+    box-shadow: 0 0 0 20px #f0f4f2, 0 0 0 25px #c9ddca;
+    outline: 5px solid transparent;
+    border-left: 0;
+    border-top: 0;
+    box-sizing: border-box;
+    max-width: 1300px; /* Set a maximum width for the card */
+  }
+  
+  .product-card__image {
+    flex: 1;
+    background-color: #ccc;
+    object-fit: cover;
+  }
+  
+  .product-card__info {
+    flex: 1;
+    /* padding: 20px; */
+    padding-left: 50px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    /* padding: 20px; */
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 50px;
+  }
+  
+  .product-card__name {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 50px;
+    margin-bottom: -25px;
+  }
+  
+  .product-card__subheading {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+    margin-bottom: -20px;
+  }
+  
+  .product-card__rate {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 50px;
+    margin-bottom: -10px;
+  }
+  
+  .product-card__location {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    margin-bottom: -10px;
+  }
+  
+  .product-card__quantity {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    margin-bottom: -10px;
+  }
+  
+  .product-card__description {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+  }
+  
+  .product-card__button {
+    background-color: #2182a1;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  @media screen and (max-width: 768px) {
+    .product-card {
+      flex-direction: column;
+      height: auto;
+      max-width: 100%;
+    }
+  
+    .product-card__image {
+      height: 300px;
+      border-radius: 0 0 3px 3px;
+    }
+  
+    .product-card__info {
+      padding: 10px;
+    }
+  }
+  

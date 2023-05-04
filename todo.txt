@@ -1,0 +1,13 @@
+    dash board
+    
+    User Management: This feature allows you to manage user accounts and permissions, including creating new accounts, editing existing accounts, and deleting accounts.
+
+    Product Management: This feature allows you to manage the products that are listed on the website, including creating new product listings, editing existing listings, and deleting listings.
+
+    Order Management: This feature allows you to manage orders that are placed on the website, including tracking order status, managing refunds and cancellations, and generating reports on order activity.
+
+    Analytics: This feature allows you to monitor website activity and generate reports on key metrics, such as page views, user engagement, and sales.
+
+    Customer Support: This feature allows you to provide customer support to users, including responding to inquiries, resolving issues, and managing user feedback.
+
+
