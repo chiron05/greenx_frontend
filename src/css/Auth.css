@@ -32,9 +32,7 @@
     width: 100%;
     padding: 40px;
 }
-.wrapper .formBox.login{
-    /* display: none; */
-}
+
 
 .wrapper .formBox.register{
     position: absolute;
