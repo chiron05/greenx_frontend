@@ -48,14 +48,14 @@
   }
 
   .active {
-    background: var(--activeItem);
+    background: #a0d4c8;
     margin-left: 0;
   }
   .active::before {
     content: "";
     width: 8px;
     height: 100%;
-    background: var(--pink);
+    background: #388372;
     margin-right: calc(1rem - 8px);
   }
   .menu .menuItem:last-child {
