@@ -10,6 +10,7 @@ import ProductCard from './components/ProductCard';
 import Advertisement from './components/Advertisement';
 import Dashboard from './components/Dashboard/Dashboard';
 
+
 /* <Navbar/>
 <Home></Home>
 <Slider></Slider>
@@ -22,14 +23,8 @@ function App() {
 
   return (
     <>
-        <Navbar/>
-    <Dashboard></Dashboard>
-    <Home></Home>
-<Slider></Slider>
+
 <Detailedproduct></Detailedproduct>
-<ProductCard></ProductCard>
-<Authentication></Authentication>
-<Advertisement></Advertisement>
     </>
     
   
