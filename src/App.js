@@ -7,23 +7,32 @@ import Home  from './components/Home';
 import Slider from './components/Silder';
 import Detailedproduct from './components/Detailedproduct';
 import ProductCard from './components/ProductCard';
+import Advertisement from './components/Advertisement';
+import Dashboard from './components/Dashboard/Dashboard';
 
-
+/* <Navbar/>
+<Home></Home>
+<Slider></Slider>
+<Detailedproduct></Detailedproduct>
+<ProductCard></ProductCard>
+<Authentication></Authentication>
+<Advertisement></Advertisement> */
 
 function App() {
 
   return (
     <>
-    <span> <ProductCard></ProductCard></span>
-   
-  
-    {/* <Navbar/>
+        <Navbar/>
+    <Dashboard></Dashboard>
     <Home></Home>
-    <Searchpage></Searchpage>
-    <Slider></Slider>
-    <Detailedproduct></Detailedproduct>
-    <Authentication></Authentication> */}
+<Slider></Slider>
+<Detailedproduct></Detailedproduct>
+<ProductCard></ProductCard>
+<Authentication></Authentication>
+<Advertisement></Advertisement>
     </>
+    
+  
   
      
   );

@@ -60,7 +60,7 @@ const Slider = () => {
     <h1 style={{ textAlign: 'center' ,color:'#92c394',marginTop:"60px"}}>CATEGORY</h1>
     <div className="slider-container" style={{ backgroundColor: '#dae3dc' ,marginBottom:"110px"}}>
      <img src={preImage} alt="Button Image" width="70" height="50" color='#dae3dc'onClick={handlePrev} style={{cursor: 'pointer',marginRight:"30px"}}/>
-      <div className="slider">
+      <div className="slids">
         {images.slice(startIndex, endIndex + 1).map((image, index) => (
           <div key={image.id} className="slider__slide">
             <img src={image.url} alt={image.alt} />

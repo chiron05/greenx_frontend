@@ -26,7 +26,7 @@ function Searchpage() {
       <div className="search-field">
         <input type="text" placeholder="Search" />
       </div>
-      <img src={searchIcon} alt="Search" />
+      <img src={searchIcon} alt="Search" style={{height:'40px', width:'40px'}}/>
     </div>
     </div>
   );
