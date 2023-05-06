@@ -25,6 +25,7 @@
     display: flex;
     justify-content: space-between;
     width: 60vw;
+    
     align-items: center;
     background-color: rgba(173, 216, 230, 0.3);
     padding: 10px;

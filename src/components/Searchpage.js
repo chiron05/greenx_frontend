@@ -3,7 +3,7 @@ import "../css/Searchpage.css"
 const searchIcon=require('../images/searchicon.png')
 function Searchpage() {
     const [location, setLocation] = useState(''); // Initialize state for location input
-    const [locationsList, setLocationsList] = useState(['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix']); // List of options for dropdown menu
+    const [locationsList, setLocationsList] = useState(['Canacona', 'Margao', 'Mapusa', 'Ponda', 'Cuncolim']); // List of options for dropdown menu
   
     const handleLocationChange = (event) => {
       setLocation(event.target.value);
