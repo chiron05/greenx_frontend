@@ -39,6 +39,7 @@ const Homepage = () => {
       <Parallax strength={500}>
         <Searchpage />
       </Parallax>
+      
       <Parallax strength={500}>
         <Slider />
       </Parallax>
