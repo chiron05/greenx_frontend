@@ -7,6 +7,10 @@ import Productspage from './Productspage';
 import Searchpage from './Searchpage';
 import Slider from './Silder';
 import '../css/Homepage.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+
+AOS.init();
 
 const Homepage = () => {
   const { scrollYProgress } = useScroll();
@@ -33,22 +37,14 @@ const Homepage = () => {
 
   return (
     <>
-      <Parallax strength={300}>
-        <Home />
-      </Parallax>
-      <Parallax strength={500}>
-        <Searchpage />
-      </Parallax>
-      
-      <Parallax strength={500}>
-        <Slider />
-      </Parallax>
-      <Parallax strength={500}>
-        <Advertisement />
-      </Parallax>
-      <Parallax strength={500}>
-        <Productspage products={products} setProducts={setProducts} />
-      </Parallax>
+      <div data-aos="fade-up" data-aos-delay="5000" data-aos-duration="2000"><Home/></div>
+      <div data-aos="fade-up"  data-aos-delay="5000" data-aos-duration="2000"><Searchpage/></div>
+      <div data-aos="fade-up" data-aos-delay="5000" data-aos-duration="2000"><Slider /></div>
+      <div data-aos="fade-up" data-aos-delay="5000" data-aos-duration="2000"> <Advertisement /></div> 
+      <div data-aos="fade-up" data-aos-delay="5000" data-aos-duration="2000"> <Productspage products={products} setProducts={setProducts} />
+    </div> 
+        
+       
     </>
   );
 };

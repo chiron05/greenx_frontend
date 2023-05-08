@@ -18,6 +18,7 @@ import Advertisement from './components/Advertisement';
 import Dashboard from './components/Dashboard/Dashboard';
 import Homepage from './components/Homepage';
 import Loading from './components/Loading';
+import Trial from './components/Trial';
 
 
 
@@ -37,6 +38,7 @@ function App() {
         <Route path="/authentication" component={Authentication} />
         <Route path="/detailproduct" component={Detailedproduct} />
         <Route path="/dashboard" component={Loading} />
+        <Route path="/trial" component={Trial} />
       </Switch>
     </Router>
   );
