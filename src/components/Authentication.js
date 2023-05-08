@@ -4,6 +4,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import LockPersonIcon from '@mui/icons-material/LockPerson';
 // import Navbar from '../Components/Navbar/Navbar';
 import Person3Icon from '@mui/icons-material/Person3';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 const Authentication = () => {
      
     const registerLink = ()=>{
@@ -64,6 +65,11 @@ const Authentication = () => {
                                 <span className='icon'><EmailIcon /></span>
                                 <input type="text" required />
                                 <label>Email</label>
+                            </div>
+                            <div className="inputBox">
+                                <span className='icon'><LocalPhoneIcon /></span>
+                                <input type="text" required />
+                                <label>Phone Number</label>
                             </div>
                             <div className='inputBox'>
                                 <span className='icon'><LockPersonIcon /></span>

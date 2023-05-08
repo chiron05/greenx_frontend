@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import '../css/Home.css'
 import { Link } from 'react-router-dom';
+import Loading from './Loading';
 
 const Home = () => {
 
@@ -37,6 +38,11 @@ const Home = () => {
       handleSlider();
     }
   }, );
+
+  if(!products){
+    return <Loading></Loading>
+  }
+
   return (
 <div className='main'>
 <div style={{ height: '80vh', width: '80vw' ,margin: '0 auto',backgroundColor: '#dae3dc',boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)'}}>

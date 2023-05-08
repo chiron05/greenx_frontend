@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import Loading from './Loading';
 function Detailedproduct() {
   const [product, setProduct] = useState(null);
   const urlSearchParams = new URLSearchParams(window.location.search);
@@ -37,7 +38,7 @@ console.log(id); // Output: 6455f94da708ce6b2c0b3700
   }, []);
 
   if (!product) {
-    return <div>Loading...</div>;
+    return <Loading></Loading>;
   }
   return (
     <div className="product-card">

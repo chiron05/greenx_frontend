@@ -1,8 +1,9 @@
 .productspage{
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    margin-top: 100px;
+  display: grid;
+  /* height: 100vh; */
+  width: 100vw;
+  /* max-width: 1200px; */
+  grid-template-columns: 11rem auto;
 }
   .card-container {
     display: flex;
