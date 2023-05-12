@@ -3,8 +3,6 @@ import "../css/Detailedproduct.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
 import Loading from './Loading';
 import Navbar from './Navbar/Navbar';
 function Detailedproduct() {
@@ -37,7 +35,7 @@ function Detailedproduct() {
     };
 
     fetchProducts();
-  }, []);
+  });
 
   if (!product) {
     return <Loading></Loading>;
@@ -57,11 +55,11 @@ function Detailedproduct() {
             speed={500}
             slidesToShow={1}
             slidesToScroll={1}
-            style={{ width: '22vw' }}
+            style={{ width: '35vw' }}
           >{
               product.images.map((imges, index) => {
                 return (
-                  <img src={imges} alt="Product Image 1" style={{ objectFit: 'cover' }} />
+                  <img src={imges} alt="ProductImage1"/>
                 )
               })
             }
