@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import '../css/Home.css'
 import { Link } from 'react-router-dom';
 import Loading from './Loading';
+import Navbar from './Navbar/Navbar';
 
 const Home = () => {
 
@@ -26,7 +27,7 @@ const Home = () => {
       });
       const result = await response.json();
       setProducts(result.data.getAllProducts);
-      
+
     };
 
     fetchProducts();
@@ -37,39 +38,40 @@ const Home = () => {
     if (products.length > 0) {
       handleSlider();
     }
-  }, );
+  },);
 
-  if(!products){
+  if (!products) {
     return <Loading></Loading>
   }
 
   return (
-<div className='main'>
-<div style={{ height: '80vh', width: '80vw' ,margin: '0 auto',backgroundColor: '#dae3dc',boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)'}}>
-      {products.map((product, index) => (
-        <div
-          key={product._id}
-          style={{
-            display: index === currentSlide ? 'flex' : 'none',
-            height: '100%',
-            width: '100%',
-          }}
-        >
-          <div style={{ flex: '1', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'start',paddingLeft:'100px' }}>
-            <div style={{ fontSize: '20px',fontStyle: 'italic',color:"#046930" }}>Special Trending Products</div>
-            <div style={{ fontSize: '40px',color:"#202b4e",fontWeight:'bold',fontFamily: 'Open Sans, sans-serif' }}>{product.name}</div>
-            <p style={{width:'20vw',height:'20vh',fontFamily: 'Open Sans, sans-serif'}}>{product.description}</p>
-            <Link to={`/detailproduct?id=${product._id}`}>
-            <button style={{backgroundColor:'#202b4e',borderRadius:'5px',height:'50px',width:'200px',color:'white',fontFamily: 'Poppins, sans-serif'}}>VIEW PRODUCT</button>
-            </Link>
-          </div>
-          <div style={{ flex: '1', backgroundImage: `url(${product.images[0]})`, backgroundSize: 'cover' }} />
+    <>
+      <div className='main'>
+        <div style={{ height: '80vh', width: '80vw', margin: '0 auto', backgroundColor: '#dae3dc', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)' }}>
+          {products.map((product, index) => (
+            <div
+              key={product._id}
+              style={{
+                display: index === currentSlide ? 'flex' : 'none',
+                height: '100%',
+                width: '100%',
+              }}
+            >
+              <div style={{ flex: '1', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'start', paddingLeft: '100px' }}>
+                <div style={{ fontSize: '20px', fontStyle: 'italic', color: "#046930" }}>Special Trending Products</div>
+                <div style={{ fontSize: '40px', color: "#202b4e", fontWeight: 'bold', fontFamily: 'Open Sans, sans-serif' }}>{product.name}</div>
+                <p style={{ width: '20vw', height: '20vh', fontFamily: 'Open Sans, sans-serif' }}>{product.description}</p>
+                <Link to={`/detailproduct?id=${product._id}`}>
+                  <button style={{ backgroundColor: '#202b4e', borderRadius: '5px', height: '50px', width: '200px', color: 'white', fontFamily: 'Poppins, sans-serif' }}>VIEW PRODUCT</button>
+                </Link>
+              </div>
+              <div style={{ flex: '1', backgroundImage: `url(${product.images[0]})`, backgroundSize: 'cover' }} />
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
 
-    </div>
-    
+      </div>
+    </>
   );
 };
 

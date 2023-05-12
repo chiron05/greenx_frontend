@@ -1,24 +1,20 @@
 .product-card {
-  margin-top: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 90vw;
     height: 70vh;
     position: relative;
-    top: 20px;
+    top:170px;
     left: 110px;
     margin-bottom:100px ;
-    /* top: 50%; */
-    /* left: 50%; */
-    /* transform: translate(-50%, -50%); */
     border: none;
     box-shadow: 0 0 0 20px #f0f4f2, 0 0 0 25px #c9ddca;
     outline: 5px solid transparent;
     border-left: 0;
     border-top: 0;
     box-sizing: border-box;
-    max-width: 1300px; /* Set a maximum width for the card */
+
   }
   
   .product-card__image {

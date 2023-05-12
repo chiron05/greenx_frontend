@@ -20,7 +20,7 @@ import Homepage from './components/Homepage';
 import Loading from './components/Loading';
 import Trial from './components/Trial';
 import Card from './components/Card/Card';
-
+import MainProducts from './components/MainProducts';
 
 
 
@@ -30,7 +30,7 @@ function App() {
     <Router>
        <Route
         render={({ location }) => (
-          location.pathname !== '/authentication' && <Navbar />
+          location.pathname !== '/authentication'
         )}
       />
       <Switch>
@@ -38,8 +38,9 @@ function App() {
         <Route path="/advertisement" component={Advertisement} />
         <Route path="/authentication" component={Authentication} />
         <Route path="/detailproduct" component={Detailedproduct} />
-        <Route path="/dashboard" component={Loading} />
-        <Route path="/card" component={Card} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/card" component={Card} />\
+        <Route path="/mainproduct" component={MainProducts} />
       </Switch>
     </Router>
   );

@@ -5,6 +5,7 @@ import LockPersonIcon from '@mui/icons-material/LockPerson';
 // import Navbar from '../Components/Navbar/Navbar';
 import Person3Icon from '@mui/icons-material/Person3';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import Navbar from './Navbar/Navbar';
 const Authentication = () => {
      
     const registerLink = ()=>{
@@ -27,7 +28,7 @@ const Authentication = () => {
 
     return (
         <>
-            
+            <Navbar/>
             <div className='container'>
                 <div className="wrapper" id='wrapper'>
                     <div className="formBox login" id='login'>

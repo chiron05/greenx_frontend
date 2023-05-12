@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useScroll, useSpring } from 'framer-motion';
-import { Parallax } from 'react-parallax';
 import Advertisement from './Advertisement';
 import Home from './Home';
 import Productspage from './Productspage';
@@ -9,16 +7,12 @@ import Slider from './Silder';
 import '../css/Homepage.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
+import Navbar from './Navbar/Navbar';
+
 
 AOS.init();
 
 const Homepage = () => {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
 
   const [products, setProducts] = useState([]);
   useEffect(() => {
@@ -31,20 +25,18 @@ const Homepage = () => {
       const result = await response.json();
       setProducts(result.data.getAllProducts);
     };
-
     fetchProducts();
   }, []);
 
   return (
     <>
-      <div data-aos="fade-up" data-aos-delay="5000" data-aos-duration="2000"><Home/></div>
-      <div data-aos="fade-up"  data-aos-delay="5000" data-aos-duration="2000"><Searchpage/></div>
-      <div data-aos="fade-up" data-aos-delay="5000" data-aos-duration="2000"><Slider /></div>
-      <div data-aos="fade-up" data-aos-delay="5000" data-aos-duration="2000"> <Advertisement /></div> 
-      <div data-aos="fade-up" data-aos-delay="5000" data-aos-duration="2000"> <Productspage products={products} setProducts={setProducts} />
-    </div> 
-        
-       
+    <Navbar/>
+      <div data-aos="fade-up" data-aos-delay="5000" data-aos-duration="2000" id='home'><Home/></div>
+      <div data-aos="fade-up"  data-aos-delay="5000" data-aos-duration="2000" id='search'><Searchpage/></div>
+      <div data-aos="fade-up" data-aos-delay="5000" data-aos-duration="2000" id='category'><Slider /></div>
+      <div data-aos="fade-up" data-aos-delay="5000" data-aos-duration="2000" id='join'> <Advertisement /></div> 
+      <div data-aos="fade-up" data-aos-delay="5000" data-aos-duration="2000" id='products'> <Productspage products={products} setProducts={setProducts} />
+    </div>  
     </>
   );
 };
