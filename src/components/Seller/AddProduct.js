@@ -1,7 +1,7 @@
 import React from 'react'
 import "../../css/additem.css"
 import { useState } from 'react'
-import { Button } from 'bootstrap'
+
 const AddProduct = () => {
   const [image,setImage] = useState("")
   const [pname,setPname] = useState('Enter Name eg."Mango"')
@@ -25,7 +25,7 @@ const AddProduct = () => {
   }
 
   const UploadProduct = () =>{
-    
+
   }
 
   return (

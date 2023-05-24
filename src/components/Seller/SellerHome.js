@@ -155,11 +155,11 @@ export default function SellerHome() {
       </Drawer>
       <Main open={open} sx={{ 'background':  'rgb(218, 227, 220)'}}>
         <DrawerHeader />
-        {page == 'profile' && <Profile/>}
-        {page == 'addproduct' && <AddProduct/>}
-        {page == 'editproduct' && <EditProducts />}
-        {page == 'allproducts' && <ProductsList />}
-        {page == 'seller' && <CreateSeller />}
+        {page === 'profile' && <Profile/>}
+        {page === 'addproduct' && <AddProduct/>}
+        {page === 'editproduct' && <EditProducts />}
+        {page === 'allproducts' && <ProductsList />}
+        {page === 'seller' && <CreateSeller />}
       </Main>
     </Box>
   );
