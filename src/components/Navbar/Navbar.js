@@ -1,12 +1,20 @@
-import React from 'react';
+import React,{useState} from 'react';
 import "../../css/Navbar.css"
 import { Link } from 'react-router-dom';
+import Sidebar from '../Sidebar/Sidebar';
 function Navbar() {
   const icon = require('../../images/icon.png')
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const handleSidebarToggle = () => {
+    console.log("1")
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
     <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#f1f7f1', boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)', padding: '10px', position: 'fixed', width: '99vw', zIndex: '10' }}>
       <div style={{ display: 'flex', alignItems: 'center' }}>
-        <img src={icon} alt="icon" style={{ width: '30px', height: '30px', marginRight: '60px', marginLeft: "50px", cursor: 'pointer' }} />
+        <img src={icon} alt="icon"  style={{ width: '30px', height: '30px', marginRight: '60px', marginLeft: "50px", cursor: 'pointer' }} onClick={handleSidebarToggle}/>
         <strong style={{ fontSize: '50px', fontStyle: 'italic', color: "#046930" }}>GreenX</strong>
       </div>
       <div style={{ display: 'flex', alignItems: 'center' ,marginRight:"50px"}}>
