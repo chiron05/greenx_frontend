@@ -13,6 +13,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Homepage from './components/Homepage';
 import Card from './components/Card/Card';
 import MainProducts from './components/MainProducts';
+import SellerHome from './components/Seller/SellerHome';
 
 
 
@@ -32,7 +33,9 @@ function App() {
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/card" component={Card} />\
         <Route path="/mainproduct" component={MainProducts} />
+        <Route path="/sellerhome" component={SellerHome} />
       </Switch>
+
     </Router>
   );
 }

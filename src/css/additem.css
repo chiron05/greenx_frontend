@@ -1,0 +1,16 @@
+.additemForm {
+    margin: 100px;
+}
+.additemForm lable{
+    font-size: 1.4em;
+    font-weight: 500;
+    margin-right: 50px;
+    margin-top: 20px;
+}
+.additemForm input{
+    font-size: 1.4em;
+    font-weight: 500;
+    margin-right: 50px;
+    margin-top: 20px;
+    width: 350px;
+}
