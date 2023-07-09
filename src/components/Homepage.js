@@ -8,7 +8,7 @@ import '../css/Homepage.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 import Navbar from './Navbar/Navbar';
-import Sidebar from './Sidebar/Sidebar';
+// import Sidebar from './Sidebar/Sidebar';
 
 
 AOS.init();
@@ -31,6 +31,7 @@ const Homepage = () => {
 
   return (
     <>
+    {/* <Sidebar></Sidebar> */}
     <Navbar/>
 
       <div data-aos="fade-up" data-aos-delay="5000" data-aos-duration="2000" id='home'><Home/></div>
@@ -38,7 +39,7 @@ const Homepage = () => {
       <div data-aos="fade-up" data-aos-delay="5000" data-aos-duration="2000" id='category'><Slider /></div>
       <div data-aos="fade-up" data-aos-delay="5000" data-aos-duration="2000" id='join'> <Advertisement /></div> 
       <div data-aos="fade-up" data-aos-delay="5000" data-aos-duration="2000" id='products'> <Productspage products={products} setProducts={setProducts} />
-      <Sidebar/>
+      {/* <Sidebar/> */}
     </div>  
     </>
   );
