@@ -27,9 +27,7 @@ const Home = () => {
       });
       const result = await response.json();
       setProducts(result.data.getAllProducts);
-
     };
-
     fetchProducts();
   }, []);
 

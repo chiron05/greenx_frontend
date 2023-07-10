@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import Advertisement from './Advertisement';
 import Home from './TrendingProducts';
 import Productspage from './Productspage';
