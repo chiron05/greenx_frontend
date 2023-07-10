@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "../../css/additem.css"
 import { useState } from 'react'
 
@@ -8,6 +8,7 @@ const AddProduct = () => {
   const [pdes,setPdes] = useState('Enter Description eg."sweeet"')
   const [pprice,setPprice] = useState('Enter Price eg."120"')
   const [pquan,setPquan] = useState('Enter Quantity eg."12kg"')
+
 
 
   const UploadImage=()=>{
@@ -24,9 +25,16 @@ const AddProduct = () => {
     .catch((err)=>{console.log(err);})
   }
 
-  const UploadProduct = () =>{
-
+  const UploadProduct = async () =>{
+    const response = await fetch('https://greenx-backend.onrender.com/graphql', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query: 'mutation{createProduct(input:{name:"banana",description:"50",price:200,quantity:"12 dozen",location:"rajbag tarrir cancaona goa",sellerID:"63454ffa606e7b4d3f5d2c89",categoryID:"63454c0dd07f6e2b5af7b143"}){_id,name}}' }),
+  });
+  console.log(response);
   }
+
+
 
   return (
     <>

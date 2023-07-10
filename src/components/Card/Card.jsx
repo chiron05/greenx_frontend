@@ -40,11 +40,11 @@ const Card = ({ id, name, description, image, price }) => {
         <Link to={`/detailproduct?id=${id}`} style={{textDecoration:'none'}}>
             <div style={{fontWeight:"500",color:"black",border:"2px dotted black",padding:"5px", borderRadius:"25px"}}>VIEW PRODUCT</div>
             </Link>
-        <div class="cardbutton">
+        {/* <div class="cardbutton">
           <svg class="svg-icon" viewBox="0 0 20 20">
             <BookmarkIcon></BookmarkIcon>
           </svg>
-        </div>
+        </div> */}
       </div>
     </div>
   )
