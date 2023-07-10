@@ -96,7 +96,7 @@ const Authentication = () => {
                             <div style={{ color: 'white', fontSize: "15px", display: "block", marginBottom: "10px" }}>{errmsg}</div>
                             <button type='button' className='btn' onClick={loginUser}>Login</button>
                             <div className='loginRegister'>
-                                <p>Don&apos;t hav an account? <a href="#" className='registerLink' onClick={registerLink}> Register </a></p>
+                                <p>Don&apos;t hav an account? <a href='#' className='registerLink' onClick={registerLink}> Register </a></p>
                             </div>
                         </form>
 
