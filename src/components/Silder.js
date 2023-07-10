@@ -26,7 +26,6 @@ const Slider = () => {
           body: JSON.stringify({query: `{ getAllCategory {_id name image description } } `,}),
         });
         const result = await response.json();
-        console.log(result.data.getAllCategory);
         setImageData(result.data.getAllCategory)
       } 
     fetchData();
