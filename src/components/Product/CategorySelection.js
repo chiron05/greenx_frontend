@@ -49,20 +49,18 @@ They allow users to browse through a range of products that fall under a particu
       </div>
       <div className='right-section'>
       <div className='grid-container'>
-      <div className='grid-block'>
-             <img src='https://thumbs.dreamstime.com/b/agriculture-vegetable-field-landscape-view-freshly-growing-84090367.jpg' style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat', width: '100%', height: '200px' }} />
-             <div className="image-overlay">
-             <p className="image-text">AGRICULTURE TOOLS</p>
-             </div>
-      </div>
-  
-          <div className='grid-block'>
-    
+      {categories.map(category => (
+        <div className='grid-block'>
+          <div key={category._id} className="category-item">
+            <img src={category.image} style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat', width: '100%', height: '200px' }} alt={category.name} />
+            <div className="image-overlay">
+              <p className="image-text">{category.name}</p>
+            </div>
           </div>
-          <div className='grid-block'></div>
-          <div className='grid-block'></div>
-          <div className='grid-block'></div>
-          <div className='grid-block'></div>
+          </div>
+        ))}
+   
+   
         </div>
       </div>
     </div>
