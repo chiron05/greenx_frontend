@@ -41,8 +41,9 @@ function Detailedproduct() {
     return <Loading></Loading>;
   }
   return (
-    <>
-      <Navbar/>
+    <div >
+      <Navbar />
+      <div>
       <div className="product-card">
         <div className="product-card__image" style={{
           height: '75vh', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', border: '30px solid #2182a1',
@@ -55,7 +56,7 @@ function Detailedproduct() {
             speed={500}
             slidesToShow={1}
             slidesToScroll={1}
-            style={{ width: '35vw' }}
+            style={{ width: '32vw' }}
           >{
               product.images.map((imges, index) => {
                 return (
@@ -75,7 +76,8 @@ function Detailedproduct() {
           <button className="product-card__button">WISHLIST</button>
         </div>
       </div>
-    </>
+      </div>
+    </div>
   );
 }
 

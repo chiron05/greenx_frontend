@@ -1,18 +1,30 @@
-import React from 'react';
-import './Sidebar.css'; // Import the CSS file for styling
+// import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
+// import { Link } from 'react-router-dom';
 
-const Sidebar = ({ onClose }) => {
-  return (
-    <div className="sidebar">
-      <ul className="sidebar-menu">
-        <li className="menu-item">Home</li>
-        <li className="menu-item">About</li>
-        <li className="menu-item">Services</li>
-        <li className="menu-item">Contact</li>
-        <button className="close-btn" onClick={onClose}>X</button>
-      </ul>
-    </div>
-  );
-};
+// import React from 'react'
 
-export default Sidebar;
+// const Sidebar = () => {
+//   return (
+    
+// <Sidebar>
+//   <Menu
+//     menuItemStyles={{
+//       button: {
+//         // the active class will be added automatically by react router
+//         // so we can use it to style the active menu item
+//         [`&.active`]: {
+//           backgroundColor: '#13395e',
+//           color: '#b6c8d9',
+//         },
+//       },
+//     }}
+//   >
+//     <MenuItem component={<Link to="/documentation" />}> Documentation</MenuItem>
+//     <MenuItem component={<Link to="/calendar" />}> Calendar</MenuItem>
+//     <MenuItem component={<Link to="/e-commerce" />}> E-commerce</MenuItem>
+//   </Menu>
+// </Sidebar>
+//   )
+// }
+
+// export default Sidebar

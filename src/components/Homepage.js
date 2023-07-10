@@ -25,6 +25,7 @@ const Homepage = () => {
 
   return (
     <>
+    {/* <Sidebar></Sidebar> */}
     <Navbar/>
       <div data-aos="fade-up" data-aos-delay="5000" data-aos-duration="2000" id='home'><Home/></div>
       <div data-aos="fade-up"  data-aos-delay="5000" data-aos-duration="2000" id='search'><Searchpage/></div>

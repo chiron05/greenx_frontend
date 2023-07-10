@@ -1,0 +1,80 @@
+.gradient-background {
+    background: linear-gradient(to bottom right, #a8d3a2, #95e869);
+    background-image: url('../../images/tree.png');
+    background-size: cover; /* Adjust as needed */
+    background-repeat: no-repeat; /* Adjust as needed */
+  
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form-container {
+    background: #ffffff;
+    width: 85vw;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .form-container h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .form-container form div {
+    margin-bottom: 10px;
+  }
+  
+  .form-container label {
+    display: block;
+    font-weight: bold;
+  }
+
+
+  
+
+  .form-container input,
+  .form-container textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .form-container button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .form-container button:hover {
+    background-color: #45a049;
+  }
+  
+  .universeInput {
+  
+    font-weight: 500;
+    font-size: 14px;
+    height: 40px;
+    border-radius: 10px;
+    padding-left: 10px;
+    border: none;
+    border-bottom: 1px solid #e5e5e5;
+    outline: none;
+  }
+  select{
+    width: 30%;
+    font-family: 'Open Sans, sans-serif'
+  }
+  
+  .universeInput:focus {
+    border-bottom: 1px solid #41c643;
+    -webkit-transition: 0.1s;
+    transition: 0.5s;
+  }
