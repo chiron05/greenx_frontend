@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { Link } from 'react-router-dom';
 import './CategorySelection.css';
 
 const CategorySelection = () => {
@@ -50,7 +50,8 @@ They allow users to browse through a range of products that fall under a particu
       <div className='right-section'>
       <div className='grid-container'>
       {categories.map(category => (
-        <div className='grid-block'>
+        <Link to={`/createproduct?id=${category._id}`}>
+        <div className='grid-block' >
           <div key={category._id} className="category-item">
             <img src={category.image} style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat', width: '100%', height: '200px' }} alt={category.name} />
             <div className="image-overlay">
@@ -58,6 +59,7 @@ They allow users to browse through a range of products that fall under a particu
             </div>
           </div>
           </div>
+          </Link>
         ))}
    
    
