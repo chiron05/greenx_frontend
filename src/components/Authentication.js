@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../css/Auth.css"
 import EmailIcon from '@mui/icons-material/Email';
 import LockPersonIcon from '@mui/icons-material/LockPerson';
@@ -7,8 +7,14 @@ import Person3Icon from '@mui/icons-material/Person3';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import Navbar from './Navbar/Navbar';
 import Loading from './Loading';
+import AOS from 'aos';
+import useLocalStorage from "../Hooks/useLocalStorage"
+
+
+AOS.init();
 
 const Authentication = () => {
+
     const [details, setDetails] = useState({
         email: "", password: "", phnum: "", username: ""
     });
@@ -19,7 +25,16 @@ const Authentication = () => {
     const [errmsg, setErrmsg] = useState("");
     var validRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     var validRegex2 = /[0-9]/;
+    let longitude = ""
+    let latitude = ""
+    navigator.geolocation.getCurrentPosition((position) => {
+        longitude = parseFloat(position.coords.longitude)
+        latitude = parseFloat(position.coords.latitude)
+    })
+    const [token, setToken] = useLocalStorage("token")
+    const [loggedStatus, setLoggedStatus] = useLocalStorage("loggedStatus")
 
+    const url = 'https://greenx-backend.onrender.com/graphql';
 
     const registerLink = () => {
         const login = document.getElementById('login')
@@ -28,49 +43,132 @@ const Authentication = () => {
         register.style.position = "relative"
         register.style.left = "-410px"
     }
+
     const loginLink = () => {
         const login = document.getElementById('login')
         const register = document.getElementById('register')
-
         login.style.display = "block"
         register.style.position = "absolute"
         register.style.left = "0px"
     }
 
-    const loginUser = () => {
+    const backtoAuth = () =>{
         const wrapper = document.getElementById('wrapper')
-        const loaderDiv = document.querySelector(".loaderDiv");
-        if (!useremail || !userpassword) {
-            setErrmsg("Empty data! please fill correctly.....")
-        }
-        else if (!useremail.match(validRegex)) {
-            setErrmsg("please fill Email-ID correctly.....")
-        }
-        else {
-            setErrmsg("")
-            wrapper.style.display = "none";
-            loaderDiv.style.display = "block";
-            
-        }
+        const succesfulReg = document.querySelector(".succesfulReg");
+        wrapper.style.display = "block";
+        succesfulReg.style.display = "none";
     }
-    const RegisterUser = () =>{
+
+    const loginUser = async() => {
         const wrapper = document.getElementById('wrapper')
         const loaderDiv = document.querySelector(".loaderDiv");
-        console.log(userphnum.length);
-        if (!useremail || !userpassword || !userphnum || !username) {
+        const succesfulLog = document.querySelector(".succesfulLog");
+        if (!userphnum || !userpassword) {
             setErrmsg("Empty data! please fill correctly.....")
         }
-        else if (!useremail.match(validRegex)) {
-            setErrmsg("please fill Email-ID correctly.....")
-        }
-        else if (userphnum.length!=10 || !userphnum.match(validRegex2)){
+        else if (userphnum.length != 10 || !userphnum.match(validRegex2)) {
             setErrmsg("please fill Phone Number correctly.....")
         }
         else {
             setErrmsg("")
             wrapper.style.display = "none";
             loaderDiv.style.display = "block";
-            
+            const requestBody = {
+                query: `
+                    mutation {
+                        login(
+                            password: "${userpassword}"
+                            contactnum: "${userphnum}"
+                        )
+                    }
+                    `,
+                variables: {}
+            };
+
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(requestBody)
+            };
+
+                console.log("trying");
+                const response = await fetch(url, requestOptions);
+                const data = await response.json();
+                console.log('Mutation response:', data);
+                loaderDiv.style.display = "none";
+                if(data.errors){
+                    console.error('Error:', data.errors);
+                    succesfulLog.style.display="none"
+                    wrapper.style.display = "block";
+                }else{
+                    succesfulLog.style.display="block"
+                    setToken(data.data.login);
+                    setLoggedStatus(true);
+                    setTimeout(() => {
+                        var destination = "http://localhost:3000/";
+                        window.location.href = destination;
+                      }, 5000);
+                }
+
+        }
+    }
+    const RegisterUser = async () => {
+        const wrapper = document.getElementById('wrapper')
+        const loaderDiv = document.querySelector(".loaderDiv");
+        const succesfulReg = document.querySelector(".succesfulReg");
+        
+        if (!useremail || !userpassword || !userphnum || !username) {
+            setErrmsg("Empty data! please fill correctly.....")
+        }
+        else if (!useremail.match(validRegex)) {
+            setErrmsg("please fill Email-ID correctly.....")
+        }
+        else if (userphnum.length != 10 || !userphnum.match(validRegex2)) {
+            setErrmsg("please fill Phone Number correctly.....")
+        }
+        else {
+            setErrmsg("")
+            wrapper.style.display = "none";
+            loaderDiv.style.display = "block";
+
+            const requestBody = {
+                query: `
+                    mutation {
+                        register(input: {
+                            name: "${username}"
+                            email: "${useremail}"
+                            password: "${userpassword}"
+                            contactnum: "${userphnum}"
+                            location:{type: "Point", coordinates: [${longitude},${latitude}]}
+                        }) {
+                        _id
+                        location{type coordinates}
+                        }
+                    }
+                    `,
+                variables: {}
+            };
+
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(requestBody)
+            };
+
+                console.log("trying");
+                const response = await fetch(url, requestOptions);
+                const data = await response.json();
+                console.log('Mutation response:', data);
+                loaderDiv.style.display = "none";
+                if(data.errors){
+                    console.error('Error:', data.errors);
+                    succesfulReg.style.display="none"
+                    wrapper.style.display = "block";
+                }else{
+                    succesfulReg.style.display="block"
+                }
+                
+
         }
     }
 
@@ -85,8 +183,8 @@ const Authentication = () => {
                         <form action='#'>
                             <div className='inputBox'>
                                 <span className='icon'><EmailIcon /></span>
-                                <input type="text" required value={details.email} onChange={(e) => { setDetails({ ...details, email: e.target.value }) }} />
-                                <label>Email</label>
+                                <input type="text" required value={details.phnum} onChange={(e) => { setDetails({ ...details, phnum: e.target.value }) }} />
+                                <label>Phone Number</label>
                             </div>
                             <div className="inputBox">
                                 <span className='icon'><LockPersonIcon /></span>
@@ -107,22 +205,22 @@ const Authentication = () => {
                         <form action='#'>
                             <div className='inputBox'>
                                 <span className='icon'><Person3Icon /></span>
-                                <input type="text" required value={details.username} onChange={(e) => { setDetails({ ...details, username: e.target.value }) }}/>
+                                <input type="text" required value={details.username} onChange={(e) => { setDetails({ ...details, username: e.target.value }) }} />
                                 <label>Username</label>
                             </div>
                             <div className="inputBox">
                                 <span className='icon'><EmailIcon /></span>
-                                <input type="text" required value={details.email} onChange={(e) => { setDetails({ ...details, email: e.target.value }) }}/>
+                                <input type="text" required value={details.email} onChange={(e) => { setDetails({ ...details, email: e.target.value }) }} />
                                 <label>Email</label>
                             </div>
                             <div className="inputBox">
                                 <span className='icon'><LocalPhoneIcon /></span>
-                                <input type="text" required value={details.phnum} onChange={(e) => { setDetails({ ...details, phnum: e.target.value }) }}/>
+                                <input type="text" required value={details.phnum} onChange={(e) => { setDetails({ ...details, phnum: e.target.value }) }} />
                                 <label>Phone Number</label>
                             </div>
                             <div className='inputBox'>
                                 <span className='icon'><LockPersonIcon /></span>
-                                <input type="password" required value={details.password} onChange={(e) => { setDetails({ ...details, password: e.target.value }) }}/>
+                                <input type="password" required value={details.password} onChange={(e) => { setDetails({ ...details, password: e.target.value }) }} />
                                 <label>Password</label>
                             </div>
                             <div style={{ color: 'white', fontSize: "15px", display: "block", marginBottom: "10px" }}>{errmsg}</div>
@@ -133,9 +231,40 @@ const Authentication = () => {
                         </form>
                     </div>
                 </div>
-                <div className="loaderDiv" style={{ "display": "none" , marginBottom:"500px"}}>
-                    <Loading/>
+
+                <div className="loaderDiv" style={{ "display": "none", justifyContent: "center", alignItems: "center" }}>
+                    <Loading />
                 </div>
+
+                <div className='succesfulReg' style={{ "display": "none", justifyContent: "center", alignItems: "center" }}>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <p class="title">Registration <br/>Successful!!</p>
+                                <p style={{fontSize:"40px"}}>✅</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <p class="title">Click here to LogIn</p>
+                                <p onClick={backtoAuth}>back</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className='succesfulLog' style={{ "display": "none", justifyContent: "center", alignItems: "center" }}>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <p class="title">Login <br/>Successful!!</p>
+                                <p style={{fontSize:"40px"}}>✅</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <p class="title">Welome to GreenX</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </>
     )
