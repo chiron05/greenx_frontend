@@ -1,0 +1,25 @@
+.geomain-container {
+    width: 300px;
+    display: flex;
+    /* flex-wrap: wrap; */
+    padding-left: 20px;
+  }
+
+.geocontainer-card .card {
+    width: 80%;
+    object-fit: cover;
+    height: 350px;
+    transition: opacity 0.3s;
+    margin-right: 100px; 
+    margin-bottom: 10px; 
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); 
+  }
+ .geocontainer-card{
+    margin-left: 5px;
+    transition: opacity 0.3s;
+ }
+
+ .geocontainer-card .card:hover {
+    opacity: 0.7; /* Adjust the opacity value to your preference */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+}
