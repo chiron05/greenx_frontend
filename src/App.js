@@ -17,6 +17,7 @@ import SellerHome from './components/Seller/SellerHome';
 import Createproduct from './components/Product/Createproduct';
 import CategorySelection from './components/Product/CategorySelection';
 import Geosearchpage from './components/GeoSearch/Geosearchpage';
+import CategoryPage from './components/CategoryPage/CategoryPage';
 
 
 
@@ -32,6 +33,7 @@ function App() {
         <Route exact path="/" component={Homepage} />
         <Route path="/advertisement" component={Advertisement} />
         <Route path="/geosearchpage" component={Geosearchpage} />
+        <Route path="/categorypage" component={CategoryPage} />
         <Route path="/createproduct" component={Createproduct} />
         <Route path="/CategorySelection" component={CategorySelection} />
         <Route path="/authentication" component={Authentication} />
