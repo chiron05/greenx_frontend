@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "../css/Slider.css"
-
+import { Link } from 'react-router-dom';
 const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -41,15 +41,20 @@ const Slider = () => {
     <>
     <h1 style={{ textAlign: 'center' ,color:'#92c394',marginTop:"60px"}}>CATEGORY</h1>
     <div className="slider-container" style={{ backgroundColor: '#dae3dc' ,marginBottom:"110px"}}>
+   
      <img src={preImage} alt="Button Image" width="70" height="50" color='#dae3dc'onClick={handlePrev} style={{cursor: 'pointer',marginRight:"30px"}}/>
       <div className="slids"> 
         { 
           imageData.slice(startIndex, endIndex + 1).map((data, index) => (
-          <div key={data._id} className="slider__slide">
+           
+           <div key={data._id} className="slider__slide">
+           <Link to='/categorypage'>
             <img src={data.image} alt={data.name} />
+            </Link>
             <div className="slider__name" style={{marginTop:"10px" ,fontWeight:"bold"}}>{data.name}</div>
             <div className="slider__description" style={{fontFamily: 'Open Sans, sans-serif'}}>{data.description}</div>
-          </div>
+           </div>
+        
         ))
         }
       </div>

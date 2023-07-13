@@ -1,0 +1,56 @@
+import React, { useEffect, useRef } from 'react';
+import mapboxgl, { Marker } from 'mapbox-gl';
+import * as turf from '@turf/turf';
+
+mapboxgl.accessToken = ''
+
+const Geomap = () => {
+  const mapContainer = useRef(null);
+
+  useEffect(() => {
+    const map = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: 'mapbox://styles/chiron714/cljzhj4xx007j01pe2zwr0a7k',
+      center: [74.043902, 14.991053],
+      zoom: 12,
+      transition: {
+        duration: 500,
+      },
+      attributionControl: false
+    });
+
+    const marker = new Marker()
+      .setLngLat([74.043902, 14.991053])
+      .addTo(map);
+
+    // Create a circle feature using Turf.js
+    const center = turf.point([74.043902, 14.991053]);
+    const circle = turf.circle(center, 30, { units: 'kilometers' });
+
+    map.on('load', () => {
+      map.addSource('circle', {
+        type: 'geojson',
+        data: circle
+      });
+
+      map.addLayer({
+        id: 'circle',
+        type: 'fill',
+        source: 'circle',
+        paint: {
+          'fill-color': '#2196f3',
+          'fill-opacity': 0.2
+        }
+      });
+    });
+
+    // Clean up the map instance when the component is unmounted
+    return () => {
+      map.remove();
+    };
+  }, []);
+
+  return <div ref={mapContainer} style={{ width: '100%', height: '90vh', boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)', marginLeft: '10px' }} />;
+};
+
+export default Geomap;
