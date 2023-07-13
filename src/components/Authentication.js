@@ -9,23 +9,11 @@ import Navbar from './Navbar/Navbar';
 import Loading from './Loading';
 import AOS from 'aos';
 import useLocalStorage from "../Hooks/useLocalStorage"
-import jwt from 'jsonwebtoken';
+
 
 AOS.init();
 
 const Authentication = () => {
-
-    const decodeJWT = (token) => {
-        try {
-          const decodedToken = jwt.verify(token, 'your-secret-key');
-          console.log('Decoded Token:', decodedToken);
-          // Access the token's payload and other information
-        } catch (error) {
-          console.error('Error decoding JWT:', error);
-          // Handle the error, such as displaying an error message
-        }
-      };
-
     const [details, setDetails] = useState({
         email: "", password: "", phnum: "", username: ""
     });
@@ -114,7 +102,6 @@ const Authentication = () => {
                 }else{
                     succesfulLog.style.display="block"
                     setToken(data.data.login);
-                    decodeJWT(token);
                     setLoggedStatus(true);
                     setTimeout(() => {
                         var destination = "http://localhost:3000/";
