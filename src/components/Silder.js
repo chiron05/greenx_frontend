@@ -48,7 +48,7 @@ const Slider = () => {
           imageData.slice(startIndex, endIndex + 1).map((data, index) => (
            
            <div key={data._id} className="slider__slide">
-           <Link to='/categorypage'>
+           <Link to={`/categorypage?categoryid=${data._id}`}>
             <img src={data.image} alt={data.name} />
             </Link>
             <div className="slider__name" style={{marginTop:"10px" ,fontWeight:"bold"}}>{data.name}</div>

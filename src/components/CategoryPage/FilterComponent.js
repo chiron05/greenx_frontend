@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import { useHistory ,useParams,useLocation  } from 'react-router-dom';
+
 import {
   Grid,
   Paper,
@@ -14,12 +16,25 @@ import {
   Checkbox,
 } from '@material-ui/core';
 
-const FilterComponent = () => {
+const FilterComponent = ({ onFilter }) => {
+  const location = useLocation();
+  const { categoryID } = useParams();
+  const history = useHistory();
   const [selectedLocation, setSelectedLocation] = useState('');
   const [selectedRating, setSelectedRating] = useState([]);
   const [priceRange, setPriceRange] = useState({ min: '', max: '' });
+  const [errorMessage, setErrorMessage] = useState('');
+  const [categoryid, setcategoryid] = useState('');
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const categoryId = searchParams.get('categoryid');
+    setcategoryid(categoryId)
+    console.log(categoryId);
+  }, []);
 
   const handleRatingChange = (event) => {
+  
     const { name, checked } = event.target;
     const rating = parseInt(name, 10);
 
@@ -28,11 +43,20 @@ const FilterComponent = () => {
     } else {
       setSelectedRating(selectedRating.filter((r) => r !== rating));
     }
-
-    console.log(selectedRating);
   };
 
   const handleApplyFilters = () => {
+   
+    const queryString = `?categoryid=${categoryid}&location=${selectedLocation}&rating=${selectedRating}&min=${priceRange.min}&max=${priceRange.max}`;
+    // Validation logic
+    if (!selectedLocation || selectedRating.length === 0 || !priceRange.min || !priceRange.max) {
+      setErrorMessage('Please fill all fields before applying filters.');
+      return;
+    }
+    setErrorMessage('');
+
+    history.push(`/categorypage${queryString}`);
+ 
     // Handle logic for applying filters
     console.log('Filters applied!');
     console.log('Selected Location:', selectedLocation);
@@ -47,11 +71,10 @@ const FilterComponent = () => {
   const handlePriceChange = (event, newValue) => {
     const { name, value } = event.target;
     setPriceRange((prevRange) => ({ ...prevRange, [name]: value }));
-    console.log(priceRange);
   };
 
   return (
-    <Paper style={{ height: '87%', padding: '16px',background:'#E9F5E8' }}>
+    <Paper style={{ height: '87%', padding: '16px', background: '#E9F5E8' }}>
       <Typography variant="h6" gutterBottom style={{ fontFamily: 'Montserrat', fontWeight: 'bold' }}>
         Filters
       </Typography>
@@ -61,17 +84,17 @@ const FilterComponent = () => {
             Rating
           </Typography>
           <FormGroup>
-            <FormControlLabel control={<Checkbox onChange={handleRatingChange} name="5" />} label="5 stars" 
-            />
+            <FormControlLabel control={<Checkbox onChange={handleRatingChange} name="5" />} label="5 stars" />
             <FormControlLabel control={<Checkbox onChange={handleRatingChange} name="4" />} label="4 stars" />
             <FormControlLabel control={<Checkbox onChange={handleRatingChange} name="3" />} label="3 stars" />
             <FormControlLabel control={<Checkbox onChange={handleRatingChange} name="2" />} label="2 stars" />
             <FormControlLabel control={<Checkbox onChange={handleRatingChange} name="1" />} label="1 stars" />
+            <FormControlLabel control={<Checkbox onChange={handleRatingChange} name="0" />} label="0 stars" />
             {/* Add more rating options */}
           </FormGroup>
           {/* Rating checkboxes */}
         </Grid>
-        <Grid item xs={12} style={{ marginTop: '20px' }}>
+        <Grid item xs={12} >
           <Typography variant="subtitle1" style={{ fontFamily: 'Montserrat', fontWeight: 'bold', marginBottom: '10px' }}>
             Location
           </Typography>
@@ -86,7 +109,7 @@ const FilterComponent = () => {
             >
               <MenuItem value="">None</MenuItem>
               <MenuItem value="403512">PERNEM</MenuItem>
-              <MenuItem value="403101">BARDEZ</MenuItem>
+              <MenuItem value="403710">BARDEZ</MenuItem> 403101
               <MenuItem value="403504">BICHOLIM</MenuItem>
               <MenuItem value="403530">SATTARI</MenuItem>
               <MenuItem value="403001">TISWADI</MenuItem>
@@ -99,7 +122,7 @@ const FilterComponent = () => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={12} style={{ marginTop: '20px' }}>
+        <Grid item xs={12} style={{ marginTop: '0px' }}>
           <Typography variant="subtitle1" style={{ fontFamily: 'Montserrat', fontWeight: 'bold' }}>
             Price Range
           </Typography>
@@ -150,8 +173,18 @@ const FilterComponent = () => {
         </Grid>
         {/* Add more filter options */}
         <Grid item xs={12}>
+          {errorMessage && (
+            <Typography variant="body2" color="error" style={{ marginBottom: '10px' }}>
+              {errorMessage}
+            </Typography>
+          )}
           <Grid container justify="center">
-            <Button variant="contained" color="#EFF7B0" onClick={handleApplyFilters} style={{ fontFamily: 'Montserrat', fontWeight: 'bold' }}>
+            <Button
+              variant="contained"
+              color="#EFF7B0"
+              onClick={handleApplyFilters}
+              style={{ fontFamily: 'Montserrat', fontWeight: 'bold' }}
+            >
               Apply Filters
             </Button>
           </Grid>
