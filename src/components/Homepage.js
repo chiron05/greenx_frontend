@@ -9,18 +9,16 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 import Navbar from './Navbar/Navbar';
 
-
 AOS.init();
 
 const Homepage = () => {
+
   useEffect(()=>{
     navigator.geolocation.getCurrentPosition((position)=>{
       console.log("Latitude is :", position.coords.latitude);
       console.log("Longitude is :", position.coords.longitude);
     })
   },[])
-
-
 
 
   return (

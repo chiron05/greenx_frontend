@@ -40,6 +40,7 @@ function Navbar() {
         <Link to='/authentication'> <button style={{ borderRadius: '5px', border: 'none', backgroundColor: '#2182a1', color: '#2182a1', padding: '10px 20px' }}><div style={{ fontFamily: 'Open Sans, sans-serif', fontWeight: 'bold', color: 'white' }}>LOG IN / SIGN UP</div></button></Link>
       </div>
     </nav>
+
   );
 }
 

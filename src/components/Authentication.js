@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import "../css/Auth.css"
 import EmailIcon from '@mui/icons-material/Email';
 import LockPersonIcon from '@mui/icons-material/LockPerson';
-// import Navbar from '../Components/Navbar/Navbar';
 import Person3Icon from '@mui/icons-material/Person3';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import Navbar from './Navbar/Navbar';
@@ -14,7 +13,6 @@ import useLocalStorage from "../Hooks/useLocalStorage"
 AOS.init();
 
 const Authentication = () => {
-
     const [details, setDetails] = useState({
         email: "", password: "", phnum: "", username: ""
     });
@@ -79,7 +77,10 @@ const Authentication = () => {
                         login(
                             password: "${userpassword}"
                             contactnum: "${userphnum}"
-                        )
+                        ){
+                            token
+                            id
+                        }
                     }
                     `,
                 variables: {}
@@ -104,10 +105,6 @@ const Authentication = () => {
                     succesfulLog.style.display="block"
                     setToken(data.data.login);
                     setLoggedStatus(true);
-                    setTimeout(() => {
-                        var destination = "http://localhost:3000/";
-                        window.location.href = destination;
-                      }, 5000);
                 }
 
         }
