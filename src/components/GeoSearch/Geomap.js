@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import mapboxgl, { Marker } from 'mapbox-gl';
 import * as turf from '@turf/turf';
 
- mapboxgl.accessToken = process.env.MAPBOX_ACCESSTOKEN
+//  mapboxgl.accessToken = 'pk.eyJ1IjoiY2hpcm9uNzE0IiwiYSI6ImNsanpmZ3hoNjBleGMzanJ1N2Y1bXhzZGIifQ.OR-gBqAUfi65wBtGakMUrQ'
 
 const Geomap = () => {
   const mapContainer = useRef(null);
