@@ -91,10 +91,6 @@ const ProductList = ({ products }) => {
           console.error('Error fetching product list:', error);
         });
 
-
-
-
-
       }
     }
   }, [location.search]);
