@@ -8,11 +8,12 @@ import Navbar from './Navbar/Navbar';
 import Loading from './Loading';
 import AOS from 'aos';
 import useLocalStorage from "../Hooks/useLocalStorage"
-
+import { useHistory } from 'react-router-dom';
 
 AOS.init();
 
 const Authentication = () => {
+    const history = useHistory();
     const [details, setDetails] = useState({
         email: "", password: "", phnum: "", username: ""
     });
@@ -31,7 +32,7 @@ const Authentication = () => {
     })
     const [token, setToken] = useLocalStorage("token")
     const [loggedStatus, setLoggedStatus] = useLocalStorage("loggedStatus")
-
+    const [userID, setUserID] = useLocalStorage("userID")
     const url = 'https://greenx-backend.onrender.com/graphql';
 
     const registerLink = () => {
@@ -61,6 +62,12 @@ const Authentication = () => {
         const wrapper = document.getElementById('wrapper')
         const loaderDiv = document.querySelector(".loaderDiv");
         const succesfulLog = document.querySelector(".succesfulLog");
+        const succesfulReg = document.querySelector(".succesfulReg");
+        succesfulLog.style.display = "none";
+        succesfulReg.style.display = "none";
+        wrapper.style.display = "none";
+        loaderDiv.style.display = "block";
+
         if (!userphnum || !userpassword) {
             setErrmsg("Empty data! please fill correctly.....")
         }
@@ -99,12 +106,18 @@ const Authentication = () => {
                 loaderDiv.style.display = "none";
                 if(data.errors){
                     console.error('Error:', data.errors);
+                    alert('Error: Invalid Login');
                     succesfulLog.style.display="none"
                     wrapper.style.display = "block";
                 }else{
+                    succesfulReg.style.display="none"
                     succesfulLog.style.display="block"
-                    setToken(data.data.login);
+                    setToken(data.data.login.token);
+                    setUserID(data.data.login.id)
                     setLoggedStatus(true);
+                    setTimeout(()=>{
+                        history.push('/');
+                    },3000)
                 }
 
         }
@@ -113,7 +126,7 @@ const Authentication = () => {
         const wrapper = document.getElementById('wrapper')
         const loaderDiv = document.querySelector(".loaderDiv");
         const succesfulReg = document.querySelector(".succesfulReg");
-        
+        const succesfulLog = document.querySelector(".succesfulLog");
         if (!useremail || !userpassword || !userphnum || !username) {
             setErrmsg("Empty data! please fill correctly.....")
         }
@@ -127,7 +140,6 @@ const Authentication = () => {
             setErrmsg("")
             wrapper.style.display = "none";
             loaderDiv.style.display = "block";
-
             const requestBody = {
                 query: `
                     mutation {
@@ -159,9 +171,12 @@ const Authentication = () => {
                 loaderDiv.style.display = "none";
                 if(data.errors){
                     console.error('Error:', data.errors);
+                    alert('Error: Invalid Process... Try Again!');
                     succesfulReg.style.display="none"
                     wrapper.style.display = "block";
                 }else{
+                    wrapper.style.display = "none";
+                    succesfulLog.style.display="none"
                     succesfulReg.style.display="block"
                 }
                 
@@ -235,13 +250,13 @@ const Authentication = () => {
 
                 <div className='succesfulReg' style={{ "display": "none", justifyContent: "center", alignItems: "center" }}>
                     <div class="flip-card">
-                        <div class="flip-card-inner">
+                        <div class="flip-card-inner" >
                             <div class="flip-card-front">
                                 <p class="title">Registration <br/>Successful!!</p>
                                 <p style={{fontSize:"40px"}}>✅</p>
                             </div>
                             <div class="flip-card-back">
-                                <p class="title">Click here to LogIn</p>
+                                <p class="title" onClick={loginUser}>Click here to LogIn</p>
                                 <p onClick={backtoAuth}>back</p>
                             </div>
                         </div>

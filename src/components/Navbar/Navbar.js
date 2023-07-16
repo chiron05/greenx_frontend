@@ -4,14 +4,13 @@ import { Link } from 'react-router-dom';
 
 
 function Navbar() {
-  const icon = require('../../images/icon.png')
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
 
   return (
     <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#f1f7f1', boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)', padding: '10px', position: 'fixed', width: '99vw', zIndex: '10' }}>
       <div style={{ display: 'flex', alignItems: 'center' }}>
-        {/* <img src={icon} alt="icon"  style={{ width: '30px', height: '30px', marginRight: '60px', marginLeft: "50px", cursor: 'pointer' }} onClick={handleSidebarToggle}/> */}
         <strong style={{ fontSize: '50px', fontStyle: 'italic', color: "#046930", marginLeft:"30px"}}>GreenX</strong>
       </div>
       {(isSidebarOpen)? <div>helo</div> : <div></div>}
