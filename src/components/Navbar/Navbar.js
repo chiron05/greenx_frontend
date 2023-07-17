@@ -18,7 +18,7 @@ function Navbar() {
         <Link to='/'  style={{textDecoration: 'none' }}><span style={{ marginRight: '20px', fontFamily: 'Open Sans, sans-serif', fontWeight: 'bold', color: '#546360', cursor: 'pointer', textDecoration: 'none' }}>
           HOME
           </span></Link>
-        <span ><a href='#home' style={{ marginRight: '20px', fontFamily: 'Open Sans, sans-serif', fontWeight: 'bold', color: '#546360', cursor: 'pointer', textDecoration: 'none' }}>
+        {/* <span ><a href='#home' style={{ marginRight: '20px', fontFamily: 'Open Sans, sans-serif', fontWeight: 'bold', color: '#546360', cursor: 'pointer', textDecoration: 'none' }}>
           TRENDING
         </a></span>
         <span ><a href='#search' style={{ marginRight: '20px', fontFamily: 'Open Sans, sans-serif', fontWeight: 'bold', color: '#546360', cursor: 'pointer', textDecoration: 'none' }}>
@@ -32,8 +32,8 @@ function Navbar() {
         </a></span>
         <span ><a href='#products' style={{ marginRight: '20px', fontFamily: 'Open Sans, sans-serif', fontWeight: 'bold', color: '#546360', cursor: 'pointer', textDecoration: 'none' }}>
           POPULAR PRODUCTS
-        </a></span>
-        <Link to='/mainproduct'  style={{textDecoration: 'none' }}><span style={{ marginRight: '20px', fontFamily: 'Open Sans, sans-serif', fontWeight: 'bold', color: '#546360', cursor: 'pointer', textDecoration: 'none' }}>
+        </a></span> */}
+        <Link to='/categorypage'  style={{textDecoration: 'none' }}><span style={{ marginRight: '20px', fontFamily: 'Open Sans, sans-serif', fontWeight: 'bold', color: '#546360', cursor: 'pointer', textDecoration: 'none' }}>
           PRODUCTS
           </span></Link>
         <Link to='/authentication'> <button style={{ borderRadius: '5px', border: 'none', backgroundColor: '#2182a1', color: '#2182a1', padding: '10px 20px' }}><div style={{ fontFamily: 'Open Sans, sans-serif', fontWeight: 'bold', color: 'white' }}>LOG IN / SIGN UP</div></button></Link>
