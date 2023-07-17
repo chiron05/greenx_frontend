@@ -2,7 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import mapboxgl, { Marker } from 'mapbox-gl';
 import * as turf from '@turf/turf';
 
-//  mapboxgl.accessToken = 'pk.eyJ1IjoiY2hpcm9uNzE0IiwiYSI6ImNsanpmZ3hoNjBleGMzanJ1N2Y1bXhzZGIifQ.OR-gBqAUfi65wBtGakMUrQ'
+mapboxgl.accessToken =
+  'pk.eyJ1IjoiY2hpcm9uNzE0IiwiYSI6ImNsanpmZ3hoNjBleGMzanJ1N2Y1bXhzZGIifQ.OR-gBqAUfi65wBtGakMUrQ';
 
 const Geomap = () => {
   const mapContainer = useRef(null);
@@ -16,12 +17,10 @@ const Geomap = () => {
       transition: {
         duration: 500,
       },
-      attributionControl: false
+      attributionControl: false,
     });
 
-    const marker = new Marker()
-      .setLngLat([74.043902, 14.991053])
-      .addTo(map);
+    const marker = new Marker().setLngLat([74.043902, 14.991053]).addTo(map);
 
     // Create a circle feature using Turf.js
     const center = turf.point([74.043902, 14.991053]);
@@ -30,7 +29,7 @@ const Geomap = () => {
     map.on('load', () => {
       map.addSource('circle', {
         type: 'geojson',
-        data: circle
+        data: circle,
       });
 
       map.addLayer({
@@ -39,8 +38,8 @@ const Geomap = () => {
         source: 'circle',
         paint: {
           'fill-color': '#2196f3',
-          'fill-opacity': 0.2
-        }
+          'fill-opacity': 0.2,
+        },
       });
     });
 
@@ -50,7 +49,37 @@ const Geomap = () => {
     };
   }, []);
 
-  return <div ref={mapContainer} style={{ width: '100%', height: '90vh', boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)', marginLeft: '10px' }} />;
+  useEffect(() => {
+    const handleResize = () => {
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      const mapElement = mapContainer.current;
+
+      if (isMobile) {
+        mapElement.style.height = '30vh';
+      } else {
+        mapElement.style.height = '90vh';
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+
+  return (
+    <div
+      ref={mapContainer}
+      id="map"
+      style={{
+        width: '100%',
+        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)',
+      }}
+    />
+  );
 };
 
 export default Geomap;

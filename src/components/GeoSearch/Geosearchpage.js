@@ -36,6 +36,7 @@ const Geosearchpage = () => {
     })
       .then(response => response.json())
       .then(data => {
+        console.log(data)
         setProducts(data.data.getNearByProductByUserLocation);
       })
       .catch(error => {
