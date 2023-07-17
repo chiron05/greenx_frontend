@@ -24,11 +24,6 @@ import CategoryPage from './components/CategoryPage/CategoryPage';
 function App() {
   return (
     <Router>
-       <Route
-        render={({ location }) => (
-          location.pathname !== '/authentication'
-        )}
-      />
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route path="/advertisement" component={Advertisement} />

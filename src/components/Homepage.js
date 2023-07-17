@@ -8,10 +8,13 @@ import '../css/Homepage.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 import Navbar from './Navbar/Navbar';
-
+import useLocalStorage from "../Hooks/useLocalStorage"
 AOS.init();
 
 const Homepage = () => {
+  const [token, setToken] = useLocalStorage("token",null)
+  const [loggedStatus, setLoggedStatus] = useLocalStorage("loggedStatus",false)
+  const [userID, setUserID] = useLocalStorage("userID",null)
 
   useEffect(()=>{
     navigator.geolocation.getCurrentPosition((position)=>{
