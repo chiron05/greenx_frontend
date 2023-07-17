@@ -1,37 +1,49 @@
+/* Geosearchpage.css */
+
 .geosearchpage {
   display: flex;
   position: sticky;
   top: 0;
-  height: 100vh;
- background: linear-gradient(to right, rgb(207, 244, 207) 30%, rgb(254, 251, 243) 20%);
-  
+  min-height: 100vh; /* Changed height to min-height to allow content to expand */
+  background: linear-gradient(to right, rgb(207, 244, 207) 30%, rgb(254, 251, 243) 20%);
 }
-/* Geosearchpage.css */
-
-/* .bg-image {
-  background-image: url('https://img.freepik.com/premium-photo/texture-craft-white-light-green-paper-background-half-two-colors-structure-vintage-kraft-olive-cardboard_113767-6375.jpg?w=2000');
- background-repeat: no-repeat;
- background-size: cover;
-} */
-
 
 .geo-left-section {
   flex: 0 0 40%;
-  /* background-color: #f2f2f2; */
-  height: 90vh;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  position: sticky; /* Changed from static to sticky */
-  top: 0; /* Added top position of 0 */
+  height: 100%; /* Changed height to 100% to occupy the full height of the parent */
+  padding: 30px;
+  position: sticky;
+  top: 0;
 }
 
 .geo-right-section {
   flex: 1;
-  /* background-color: #f2f2f2; */
   height: 100%;
   overflow-y: auto;
 }
+
 .smooth-scroll {
   overflow-y: scroll;
   scroll-behavior: smooth;
+}
+
+/* Media queries for responsive design */
+
+@media (max-width: 768px) {
+  .geosearchpage {
+    flex-direction: column; /* Change to a vertical layout on smaller screens */
+  }
+
+  .geo-left-section {
+    flex: 1; /* Take up full width in a vertical layout */
+    height: 100px; /* Allow content to determine the height */
+    padding: 20px; /* Reduce padding for smaller screens */
+    position: static; /* Remove sticky positioning */
+  }
+
+  .geo-right-section {
+    flex: 1;
+    height: auto;
+    overflow-y: visible; /* Allow content to overflow */
+  }
 }

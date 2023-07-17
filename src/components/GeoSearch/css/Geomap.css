@@ -1,4 +1,15 @@
-#map{
+.map{
     height: 60vh;
-  
+    width: '100%';
+    box-shadow: '0 2px 10px rgba(0, 0, 0, 0.2)';
+    margin-left: 10px;
+ 
 }
+
+@media (max-width: 768px) {
+    #map{
+        height: 20vh;
+      
+    }
+  }
+  
