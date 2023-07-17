@@ -19,7 +19,7 @@ const Productspage = () => {
 
   return (
     <div className="productspage">
-    <span style={{marginBottom:'20px',marginTop:'20px', fontFamily: 'Open Sans, sans-serif',fontSize:"3em"}}> Popular Products</span>
+    <h1 style={{ textAlign: 'center' ,color:'#92c394',marginTop:"60px"}}>ALL PRODUCTS</h1>
       <div className="card-container">
         {products.map(product => {
           return <Card key={product._id} id={product._id} name={product.name} description={product.description} image={product.images[0]} price={product.price} ></Card>

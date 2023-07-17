@@ -13,8 +13,9 @@ function Searchpage() {
       setLocation(location);
     }
   return (
-    <div className="search-page">
-    <span style={{color:'white',fontSize:'30px',fontWeight:"600"}}> Search Products In your locality</span>
+    <div className="search-page" >
+    <h1 style={{ textAlign: 'center' ,color:'white'}}>SEARCH PRODUCTS</h1>
+    <span style={{color:'white',fontSize:'30px',fontWeight:"600"}}>In your locality</span>
      <div className="search-bar">
      <div className="location">
         <select value={location} onChange={handleLocationChange}>

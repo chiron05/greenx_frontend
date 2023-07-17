@@ -18,6 +18,7 @@ import Createproduct from './components/Product/Createproduct';
 import CategorySelection from './components/Product/CategorySelection';
 import Geosearchpage from './components/GeoSearch/Geosearchpage';
 import CategoryPage from './components/CategoryPage/CategoryPage';
+import SellDashboard from './components/SellDashboard';
 
 
 
@@ -36,6 +37,7 @@ function App() {
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/card" component={Card} />\
         <Route path="/mainproduct" component={MainProducts} />
+        <Route path="/sellerdashboard" component={SellDashboard} />
         <Route path="/sellerhome" component={SellerHome} />
       </Switch>
 

@@ -44,7 +44,9 @@ const Home = () => {
 
   return (
     <>
-      <div className='main'>
+      
+      <div className='main' style={{display:"flex",flexDirection:"column"}}>
+      <h1 style={{ textAlign: 'center' ,color:'white'}}>TRENDING PRODUCTS</h1>
         <div style={{ height: '80vh', width: '80vw', margin: '0 auto', backgroundColor: '#dae3dc', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)' }}>
           {products.map((product, index) => (
             <div
