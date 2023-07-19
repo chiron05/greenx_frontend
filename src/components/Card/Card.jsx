@@ -37,7 +37,7 @@ const Card = ({ id, name, description, image, price }) => {
         {getStars()}
       </div>
       <div class="cardfooter">
-        <span class="texttitle">${price}</span>
+        <span class="texttitle">₹{price}</span>
         {(loggedStatus)?<Link to={`/detailproduct?id=${id}`} style={{textDecoration:'none'}}>
             <div style={{fontWeight:"500",color:"black",border:"2px dotted black",padding:"5px", borderRadius:"25px"}}>Product Details</div>
             </Link>:

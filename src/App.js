@@ -38,7 +38,6 @@ function App() {
         <Route path="/card" component={Card} />\
         <Route path="/mainproduct" component={MainProducts} />
         <Route path="/sellerdashboard" component={SellDashboard} />
-        <Route path="/sellerhome" component={SellerHome} />
       </Switch>
 
     </Router>
