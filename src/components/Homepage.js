@@ -16,12 +16,19 @@ const Homepage = () => {
   const [loggedStatus, setLoggedStatus] = useLocalStorage("loggedStatus",false)
   const [userID, setUserID] = useLocalStorage("userID",null)
 
-  // useEffect(()=>{
-  //   navigator.geolocation.getCurrentPosition((position)=>{
-  //     console.log("Latitude is :", position.coords.latitude);
-  //     console.log("Longitude is :", position.coords.longitude);
-  //   })
-  // },[])
+    useEffect(()=>{
+
+      const GetLocation =()=>{
+        if(loggedStatus==true){
+          navigator.geolocation.getCurrentPosition((position)=>{
+            console.log("Latitude is :", position.coords.latitude);
+            console.log("Longitude is :", position.coords.longitude);
+          })
+        }
+      }
+      GetLocation();
+    },[])
+
 
 
   return (
