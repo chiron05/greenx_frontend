@@ -18,18 +18,13 @@ import Createproduct from './components/Product/Createproduct';
 import CategorySelection from './components/Product/CategorySelection';
 import Geosearchpage from './components/GeoSearch/Geosearchpage';
 import CategoryPage from './components/CategoryPage/CategoryPage';
-import SearchPage from './components/SearchPage/SearchPage';
+import SellDashboard from './components/SellDashboard';
 
 
 
 function App() {
   return (
     <Router>
-       <Route
-        render={({ location }) => (
-          location.pathname !== '/authentication'
-        )}
-      />
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route path="/advertisement" component={Advertisement} />
@@ -43,7 +38,7 @@ function App() {
         <Route path="/card" component={Card} />SearchPage
         <Route path="/searchpage" component={SearchPage} />
         <Route path="/mainproduct" component={MainProducts} />
-        <Route path="/sellerhome" component={SellerHome} />
+        <Route path="/sellerdashboard" component={SellDashboard} />
       </Switch>
 
     </Router>

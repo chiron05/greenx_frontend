@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import './Card.css'
 import { Link } from 'react-router-dom';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
+import useLocalStorage from "../../Hooks/useLocalStorage"
+
 const Card = ({ id, name, description, image, price }) => {
   const [liked, setLiked] = useState(false);
   const [rating, setRating] = useState(3.5);
-
+  const [loggedStatus, setLoggedStatus] = useLocalStorage("loggedStatus")
   const toggleLike = () => {
     setLiked(!liked);
   }
@@ -35,16 +37,13 @@ const Card = ({ id, name, description, image, price }) => {
         {getStars()}
       </div>
       <div class="cardfooter">
-        <span class="texttitle">${price}</span>
-
-        <Link to={`/detailproduct?id=${id}`} style={{textDecoration:'none'}}>
-            <div style={{fontWeight:"500",color:"black",border:"2px dotted black",padding:"5px", borderRadius:"25px"}}>VIEW PRODUCT</div>
-            </Link>
-        {/* <div class="cardbutton">
-          <svg class="svg-icon" viewBox="0 0 20 20">
-            <BookmarkIcon></BookmarkIcon>
-          </svg>
-        </div> */}
+        <span class="texttitle">₹{price}</span>
+        {(loggedStatus)?<Link to={`/detailproduct?id=${id}`} style={{textDecoration:'none'}}>
+            <div style={{fontWeight:"500",color:"black",border:"2px dotted black",padding:"5px", borderRadius:"25px"}}>Product Details</div>
+            </Link>:
+            <Link to={`/authentication`} style={{textDecoration:'none'}}>
+            <div style={{fontWeight:"500",color:"black",border:"2px dotted black",padding:"5px", borderRadius:"25px"}}>Login to Veiw Product</div>
+            </Link>}
       </div>
     </div>
   )

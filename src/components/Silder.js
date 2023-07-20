@@ -52,7 +52,7 @@ const Slider = () => {
             <img src={data.image} alt={data.name} />
             </Link>
             <div className="slider__name" style={{marginTop:"10px" ,fontWeight:"bold"}}>{data.name}</div>
-            <div className="slider__description" style={{fontFamily: 'Open Sans, sans-serif'}}>{data.description}</div>
+            <div className="slider__description" style={{fontFamily: 'Open Sans, sans-serif'}}>{data.description.slice(0,300)}</div>
            </div>
         
         ))

@@ -5,6 +5,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Loading from './Loading';
 import Navbar from './Navbar/Navbar';
+import useLocalStorage from "../Hooks/useLocalStorage"
+
 
 
 function Detailedproduct() {
@@ -13,19 +15,45 @@ function Detailedproduct() {
 
   const urlSearchParams = new URLSearchParams(window.location.search);
   const id = urlSearchParams.get('id');
+  const [userID, setUserID] = useLocalStorage("userID")
+  const url = 'https://greenx-backend.onrender.com/graphql';
+  const [check,setCheck]= useState(false)
+  var idkey = ""
 
-
-
-
-
+  const userDetails = async ()=>{
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        query: `{getUserById(userId: "${userID}") {
+          bookmarks{_id}
+      }
+    }` ,
+    variables: {}
+    }),
+    });
+    const result = await response.json();
+    // console.log(result)
+    // setWishlist(result.data.getUserById.bookmarks)
+    // console.log(wishlist);
+    result.data.getUserById.bookmarks.map((pid,key)=>{
+      if(pid._id==id){
+        idkey =key
+      }
+    })
+    console.log(idkey);
+    if(idkey!=''){
+      setCheck(true)
+    }else{
+      setCheck(false)
+    }
+  }
 
   
-  console.log(id); // Output: 6455f94da708ce6b2c0b3700
-
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await fetch('https://greenx-backend.onrender.com/graphql', {
+      const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -40,13 +68,67 @@ function Detailedproduct() {
       }` }),
       });
       const result = await response.json();
-      console.log(result)
       setProduct(result.data['getProductById']);
-      console.log(product.images)
     };
-
+    userDetails();
     fetchProducts();
-  });
+  },[]);
+
+const addToWishlist = async()=>{
+  const requestBody = {
+    query: `
+        mutation {
+          updateBookmarksAdd(
+            productId: "${id}"
+            userId: "${userID}"
+            ){
+              name
+              _id
+            }
+        }
+        `,
+    variables: {}
+};
+const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(requestBody)
+};
+    console.log("trying");
+    const response = await fetch(url, requestOptions);
+    const data = await response.json();
+    console.log('Mutation response:', data);
+    userDetails();
+}
+
+
+const removeWishlist = async()=>{
+  const requestBody = {
+    query: `
+        mutation {
+          updateBookmarksRemove(
+            productId: "${id}"
+            userId: "${userID}"
+            ){
+              name
+              _id
+            }
+        }
+        `,
+    variables: {}
+};
+const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(requestBody)
+};
+    console.log("trying");
+    const response = await fetch(url, requestOptions);
+    const data = await response.json();
+    console.log('Mutation response:', data);
+    userDetails();
+}
+
 
   if (!product) {
     return <Loading></Loading>;
@@ -62,7 +144,6 @@ function Detailedproduct() {
         }}>
           <Slider
             autoplay={true}
-            // dots={true}
             infinite={true}
             speed={500}
             slidesToShow={1}
@@ -84,7 +165,9 @@ function Detailedproduct() {
           <p className="product-card__location">Location: Dummy</p>
           <p className="product-card__quantity">{"QUANTITY: " + product.quantity}</p>
           <p className="product-card__description">{"DESCRIPTION: " + product.description}</p>
-          <button className="product-card__button">WISHLIST</button>
+          {(check)?<button className="product-card__button2" onClick={removeWishlist}>WISHLISTED</button>:
+          <button className="product-card__button" onClick={addToWishlist}>Add To Wishlist</button>}
+
         </div>
       </div>
       </div>

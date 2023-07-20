@@ -4,7 +4,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import LockPersonIcon from '@mui/icons-material/LockPerson';
 import Person3Icon from '@mui/icons-material/Person3';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import Navbar from './Navbar/Navbar';
+import NavbarLogin from './Navbar/NavbarLogin';
 import Loading from './Loading';
 import AOS from 'aos';
 import useLocalStorage from "../Hooks/useLocalStorage"
@@ -187,7 +187,7 @@ const Authentication = () => {
 
     return (
         <>
-            <Navbar />
+            <NavbarLogin />
             <div className='container'>
                 <div className="wrapper" id='wrapper'>
                     <div className="formBox login" id='login'>
