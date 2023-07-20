@@ -11,6 +11,8 @@ import useLocalStorage from "../Hooks/useLocalStorage"
 
 function Detailedproduct() {
   const [product, setProduct] = useState(null);
+
+
   const urlSearchParams = new URLSearchParams(window.location.search);
   const id = urlSearchParams.get('id');
   const [userID, setUserID] = useLocalStorage("userID")

@@ -109,7 +109,7 @@ const FilterComponent = ({ onFilter }) => {
             >
               <MenuItem value="">None</MenuItem>
               <MenuItem value="403512">PERNEM</MenuItem>
-              <MenuItem value="403710">BARDEZ</MenuItem> 403101
+              <MenuItem value="403101">BARDEZ</MenuItem> 
               <MenuItem value="403504">BICHOLIM</MenuItem>
               <MenuItem value="403530">SATTARI</MenuItem>
               <MenuItem value="403001">TISWADI</MenuItem>

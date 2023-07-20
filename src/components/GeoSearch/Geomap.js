@@ -80,6 +80,7 @@ const Geomap = () => {
       }}
     />
   );
+  
 };
 
 export default Geomap;

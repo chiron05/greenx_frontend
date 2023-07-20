@@ -66,7 +66,7 @@ const Home = () => {
                   <button style={{ backgroundColor: '#202b4e', borderRadius: '5px', height: '50px', width: '200px', color: 'white', fontFamily: 'Poppins, sans-serif' }}>VIEW PRODUCT</button>
                 </Link>:<></>}
               </div>
-              <div style={{ flex: '1', backgroundImage: `url(${product.images[0]})`, backgroundSize: 'cover' }} />
+              <div style={{ flex: '1', backgroundImage: `url(${product.images[0]})`, backgroundSize: 'cover' ,backgroundPosition:'center'}} />
             </div>
           ))}
         </div>
