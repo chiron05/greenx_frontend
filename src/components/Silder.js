@@ -39,9 +39,8 @@ const Slider = () => {
 
   return (
     <>
-    <h1 style={{ textAlign: 'center' ,color:'#92c394',marginTop:"60px"}}>CATEGORIES</h1>
-    <div className="slider-container" style={{ backgroundColor: '#dae3dc' ,marginBottom:"110px"}}>
-   
+    <h1 style={{ textAlign: 'center' ,color:'#92c394',marginTop:"200px"}}>CATEGORIES</h1>
+    <div className="slider-container" style={{ backgroundColor: '#dae3dc' ,marginBottom:"200px"}}>
      <img src={preImage} alt="Button Image" width="70" height="50" color='#dae3dc'onClick={handlePrev} style={{cursor: 'pointer',marginRight:"30px"}}/>
       <div className="slids"> 
         { 

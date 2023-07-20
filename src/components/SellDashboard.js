@@ -99,7 +99,7 @@ const SellDashboard = () => {
         <h1 style={{ textAlign: 'center', color: '#92c394', marginTop: "60px", marginBottom: "60px" }}>Inventory management</h1>
         <div className="btnBack" style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center", width:"80%"}}>
           <div  style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", width: "50%", height: "60vh"}}>
-            <button class="Addbtn" style={{margin:"20px 30px"}} onClick={()=>{history.push('/CategorySelection');}}>
+            <button class="Addbtn" style={{margin:"20px 30px"}} onClick={()=>{history.push('/CategorySelection')}}>
             ADD PRODUCT
             </button>
             <button class="Addbtn" style={{margin:"20px 30px"}}>
