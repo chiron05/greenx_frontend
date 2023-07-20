@@ -36,7 +36,7 @@ function App() {
         <Route path="/detailproduct" component={Detailedproduct} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/card" component={Card} />SearchPage
-        <Route path="/searchpage" component={SearchPage} />
+        {/* <Route path="/searchpage" component={SearchPage} /> */}
         <Route path="/mainproduct" component={MainProducts} />
         <Route path="/sellerdashboard" component={SellDashboard} />
       </Switch>

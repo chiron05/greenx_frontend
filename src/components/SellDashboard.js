@@ -73,13 +73,13 @@ const SellDashboard = () => {
   return (
     <>
       <NavbarDasBoard />
-      <section style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center" , paddingTop: "150px", paddingBottom:"150px",paddingRight:"250px"}}>
+      <section style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center", paddingTop: "150px", paddingBottom: "150px", paddingRight: "250px" }}>
         <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center" }}>
           <div className="container-main">
             <div className="description" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-              <div className="welcome-container" style={{textAlign:"center"}}>
-                <h1>HELLO {userName}</h1>
-                <h1>Welcome to GREEN<span style={{ color: "#ff00006d" }}>X</span>!</h1>
+              <div className="welcome-container" style={{ textAlign: "center" }}>
+                <h1 className='titlehead'>HELLO {userName}</h1>
+                <h1 className='titlehead'>Welcome to GREEN<span style={{ color: "#ff00006d" }}>X</span>!</h1>
               </div>
             </div>
             <div className="circle">
@@ -89,9 +89,12 @@ const SellDashboard = () => {
         </div>
       </section>
 
-      <section style={{ display: "block", paddingTop: "100px" }}>
+      <section style={{ display: "block", paddingTop: "250px"}}>
         <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center" }}>
-
+          <button className='addBtn'> Pick up!</button>
+          <button className='addBtn'> Pick up!</button>
+          <button className='addBtn'> Pick up!</button>
+          <button className='addBtn'> Pick up!</button>
         </div>
       </section>
 
@@ -100,7 +103,7 @@ const SellDashboard = () => {
 
 
 
-      <section style={{ display: "block", paddingTop: "100px" }}>
+      <section id='wishlist' style={{ display: "block", paddingTop: "100px" }}>
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
           <h1 style={{ textAlign: 'center', color: '#92c394', marginTop: "60px" }}>Your Wislist</h1>
           {(tick) ? <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", flexWrap: "wrap", width: "70%" }}>
@@ -114,7 +117,7 @@ const SellDashboard = () => {
         </div>
       </section>
 
-      <section style={{ display: "block", paddingTop: "100px", paddingBottom: "200px" }}>
+      <section id='inventory' style={{ display: "block", paddingTop: "100px", paddingBottom: "200px" }}>
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
           <h1 style={{ textAlign: 'center', color: '#92c394', marginTop: "60px" }}>Your Inventory</h1>
           {(stick) ? <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", flexWrap: "wrap", width: "70%" }}>
