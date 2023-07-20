@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import '../css/Home.css'
 import { Link } from 'react-router-dom';
 import Loading from './Loading';
-
+import useLocalStorage from "../Hooks/useLocalStorage"
 
 const Home = () => {
-
+  const [loggedStatus, setLoggedStatus] = useLocalStorage("loggedStatus")
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideInterval = 3000;
   const [products, setProducts] = useState([]);
@@ -61,9 +61,10 @@ const Home = () => {
                 <div style={{ fontSize: '20px', fontStyle: 'italic', color: "#046930" }}>Special Trending Products</div>
                 <div style={{ fontSize: '40px', color: "#202b4e", fontWeight: 'bold', fontFamily: 'Open Sans, sans-serif' }}>{product.name}</div>
                 <p style={{ width: '20vw', height: '20vh', fontFamily: 'Open Sans, sans-serif' }}>{product.description}</p>
-                <Link to={`/detailproduct?id=${product._id}`}>
+
+                {(loggedStatus)?<Link to={`/detailproduct?id=${product._id}`}>
                   <button style={{ backgroundColor: '#202b4e', borderRadius: '5px', height: '50px', width: '200px', color: 'white', fontFamily: 'Poppins, sans-serif' }}>VIEW PRODUCT</button>
-                </Link>
+                </Link>:<></>}
               </div>
               <div style={{ flex: '1', backgroundImage: `url(${product.images[0]})`, backgroundSize: 'cover' }} />
             </div>

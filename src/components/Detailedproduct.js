@@ -16,7 +16,7 @@ function Detailedproduct() {
   const [userID, setUserID] = useLocalStorage("userID")
   const url = 'https://greenx-backend.onrender.com/graphql';
   const [check,setCheck]= useState(false)
-  var idkey = ""
+
 
   const userDetails = async ()=>{
     const response = await fetch(url, {
@@ -31,16 +31,13 @@ function Detailedproduct() {
     }),
     });
     const result = await response.json();
-    // console.log(result)
-    // setWishlist(result.data.getUserById.bookmarks)
-    // console.log(wishlist);
+    var idkey = null
     result.data.getUserById.bookmarks.map((pid,key)=>{
       if(pid._id==id){
         idkey =key
       }
     })
-    console.log(idkey);
-    if(idkey!=''){
+    if(idkey!=null){
       setCheck(true)
     }else{
       setCheck(false)
@@ -50,6 +47,7 @@ function Detailedproduct() {
   
 
   useEffect(() => {
+    userDetails();
     const fetchProducts = async () => {
       const response = await fetch(url, {
         method: 'POST',
@@ -68,7 +66,6 @@ function Detailedproduct() {
       const result = await response.json();
       setProduct(result.data['getProductById']);
     };
-    userDetails();
     fetchProducts();
   },[]);
 
@@ -95,7 +92,6 @@ const requestOptions = {
     console.log("trying");
     const response = await fetch(url, requestOptions);
     const data = await response.json();
-    console.log('Mutation response:', data);
     userDetails();
 }
 
