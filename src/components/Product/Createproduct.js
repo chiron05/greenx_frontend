@@ -8,7 +8,7 @@ import { css } from '@emotion/react';
 import ProgressBar from 'react-progress-bar-plus';
 import 'react-progress-bar-plus/lib/progress-bar.css';
 import useLocalStorage from "../../Hooks/useLocalStorage"
-
+import { useHistory } from 'react-router-dom';
 
 
 const imge='../../images/img2.png'
@@ -24,7 +24,7 @@ const override = css`
 
 
 const Createproduct = () => {
-
+  const history = useHistory();
   const [userID, setUserID] = useLocalStorage("userID")
   const [isUploading, setIsUploading] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -209,6 +209,9 @@ try {
     });
   }
   setSubmitProgress(0);
+  setTimeout(()=>{
+    history.push('/sellerdashboard');
+},3000)
 } catch (error) {
   // Handle any network or other errors
   setSubmitProgress(0);

@@ -5,8 +5,10 @@ import Card from './Card/Card';
 import { useState } from 'react';
 import useLocalStorage from "../Hooks/useLocalStorage"
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const SellDashboard = () => {
+  const history = useHistory();
   const [products, setProducts] = useState([]);
   const [sellproducts, setSellProducts] = useState([]);
   const [userID, setUserID] = useLocalStorage("userID")
@@ -93,11 +95,11 @@ const SellDashboard = () => {
 
 
 
-      <section style={{ display: "flex", paddingTop: "250px", flexDirection: "column", justifyContent: "space-around", alignItems: "center" }}>
+      <section id='inventorymanagement' style={{ display: "flex", paddingTop: "200px", flexDirection: "column", justifyContent: "space-around", alignItems: "center" }}>
         <h1 style={{ textAlign: 'center', color: '#92c394', marginTop: "60px", marginBottom: "60px" }}>Inventory management</h1>
         <div className="btnBack" style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center", width:"80%"}}>
           <div  style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", width: "50%", height: "60vh"}}>
-            <button class="Addbtn" style={{margin:"20px 30px"}}>
+            <button class="Addbtn" style={{margin:"20px 30px"}} onClick={()=>{history.push('/CategorySelection');}}>
             ADD PRODUCT
             </button>
             <button class="Addbtn" style={{margin:"20px 30px"}}>
@@ -118,9 +120,21 @@ const SellDashboard = () => {
 
 
 
+      <section id='inventory' style={{ display: "block", paddingTop: "150px", paddingBottom: "50px" }}>
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+          <h1 style={{ textAlign: 'center', color: '#92c394', marginTop: "60px" }}>Your Inventory</h1>
+          {(stick) ? <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", flexWrap: "wrap", width: "70%" }}>
+            {sellproducts.map(product => {
+              return <Card key={product._id} id={product._id} name={product.name} description={product.description} image={product.images[0]} price={product.price} ></Card>
+            })}
+          </div> :
+            <>Empty List....</>
+          }
+        </div>
+      </section>
 
 
-      <section id='wishlist' style={{ display: "block", paddingTop: "100px" }}>
+      <section id='wishlist' style={{ display: "block", paddingTop: "100px",paddingBottom:"100px" }}>
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
           <h1 style={{ textAlign: 'center', color: '#92c394', marginTop: "60px" }}>Your Wislist</h1>
           {(tick) ? <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", flexWrap: "wrap", width: "70%" }}>
@@ -134,18 +148,6 @@ const SellDashboard = () => {
         </div>
       </section>
 
-      <section id='inventory' style={{ display: "block", paddingTop: "100px", paddingBottom: "200px" }}>
-        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-          <h1 style={{ textAlign: 'center', color: '#92c394', marginTop: "60px" }}>Your Inventory</h1>
-          {(stick) ? <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", flexWrap: "wrap", width: "70%" }}>
-            {sellproducts.map(product => {
-              return <Card key={product._id} id={product._id} name={product.name} description={product.description} image={product.images[0]} price={product.price} ></Card>
-            })}
-          </div> :
-            <>Empty List....</>
-          }
-        </div>
-      </section>
     </>
   )
 }
