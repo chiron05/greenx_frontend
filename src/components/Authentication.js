@@ -187,7 +187,7 @@ const Authentication = () => {
 
     return (
         <>
-            <NavbarLogin />
+            {/* <NavbarLogin /> */}
             <div className='container'>
                 <div className="wrapper" id='wrapper'>
                     <div className="formBox login" id='login'>

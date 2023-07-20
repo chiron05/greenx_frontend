@@ -139,7 +139,7 @@ const requestOptions = {
       <div>
       <div className="product-card">
         <div className="product-card__image" style={{
-          height: '75vh', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', border: '30px solid #2182a1',
+          height: '75vh', display: 'flex', justifyContent: 'center', alignItems: 'center', border: '30px solid #2182a1',
           borderRadius: '10px'
         }}>
           <Slider
@@ -152,9 +152,9 @@ const requestOptions = {
           >{
               product.images.map((imges, index) => {
                 return (
-                  <img src={imges} alt="ProductImage1"/>
-                )
-              })
+                <img src={imges} style={{ objectFit: 'cover', height: '75vh', width: '32vw', borderRadius: '10px', border: '30px solid #2182a1' }} alt={`ProductImage${index + 1}`} />
+                 )
+             })
             }
           </Slider>
         </div>

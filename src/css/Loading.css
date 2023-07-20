@@ -1,15 +1,16 @@
 .containerload {
     width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
   }
   
   .tree {
     position: relative;
     width: 50px;
     height: 50px;
-    top: 35vh;
+    top: 45vh;
     transform-style: preserve-3d;
     transform: rotateX(-20deg) rotateY(30deg);
     animation: treeAnimate 5s linear infinite;
