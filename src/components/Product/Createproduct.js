@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import { css } from '@emotion/react';
 import ProgressBar from 'react-progress-bar-plus';
 import 'react-progress-bar-plus/lib/progress-bar.css';
-
+import useLocalStorage from "../../Hooks/useLocalStorage"
 
 
 
@@ -24,6 +24,8 @@ const override = css`
 
 
 const Createproduct = () => {
+
+  const [userID, setUserID] = useLocalStorage("userID")
   const [isUploading, setIsUploading] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [submitProgress, setSubmitProgress] = useState(0);
@@ -148,7 +150,7 @@ const Createproduct = () => {
       description: "${description}",
       price: ${price},
       quantity: "${quantity}",
-      sellerID: "6455f708a708ce6b2c0b36f6",
+      sellerID: "${userID}",
       categoryID: "${categoryid}",
       pincode: "${pincode}",
       images: ["${images.join('", "')}"]
@@ -178,7 +180,6 @@ try {
   const result = await response.json();
 
   setSubmitProgress(80)
-  // Check if there are any errors in the response
   if (result.errors) {
     console.log(result.errors)
     // Handle the error

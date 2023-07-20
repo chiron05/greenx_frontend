@@ -13,7 +13,7 @@ const Advertisement = () => {
         <button style={{height:'70px',width:"200px", fontWeight:"900",borderRadius:"20px"}}>JOIN FOR FREE</button>
       </div>
       <div className="circle">
-        <img src="https://res.cloudinary.com/jerrick/image/upload/d_642250b563292b35f27461a7.png,f_jpg,fl_progressive,q_auto,w_1024/63403c4eec6ea6001cfc84c8.jpg" alt="Description of" />
+        <img src="https://indiacsr.in/wp-content/uploads/2023/04/Eating-Healthily.jpg" alt="Description of" />
       </div>
     </div> 
     </div>

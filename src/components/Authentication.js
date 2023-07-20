@@ -171,9 +171,16 @@ const Authentication = () => {
                 loaderDiv.style.display = "none";
                 if(data.errors){
                     console.error('Error:', data.errors);
-                    alert('Error: Invalid Process... Try Again!');
+                    alert(data.errors[0].message);
                     succesfulReg.style.display="none"
-                    wrapper.style.display = "block";
+                    
+                    setTimeout(()=>{
+                        history.push('/authentication');
+                        wrapper.style.display = "block";
+                        setDetails({
+                            password: ""
+                        })
+                    },1000)
                 }else{
                     wrapper.style.display = "none";
                     succesfulLog.style.display="none"

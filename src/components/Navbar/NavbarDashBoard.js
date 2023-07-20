@@ -11,11 +11,11 @@ function NavbarDashBoard() {
   const history = useHistory();
 
   const LogoutUser = () => {
-      history.push('/');
-      alert("User Logged Out Successfully")
-      setLoggedStatus(false)
-      setToken(null)
-      setUserID(null)
+    history.push('/');
+    alert("User Logged Out Successfully")
+    setLoggedStatus(false)
+    setToken(null)
+    setUserID(null)
   }
 
   return (
@@ -26,6 +26,12 @@ function NavbarDashBoard() {
       <div style={{ display: 'flex', alignItems: 'center', marginRight: "50px" }}>
         {(loggedStatus) ?
           <>
+            <span ><a href='#wishlist' style={{ marginRight: '30px', fontFamily: 'Open Sans, sans-serif', fontWeight: 'bold', color: '#546360', cursor: 'pointer', textDecoration: 'none' }}>
+              WISHLIST
+            </a></span>
+            <span ><a href='#inventory' style={{ marginRight: '30px', fontFamily: 'Open Sans, sans-serif', fontWeight: 'bold', color: '#546360', cursor: 'pointer', textDecoration: 'none' }}>
+              INVENTORY
+            </a></span>
             <Link to='/'> <button style={{ borderRadius: '5px', border: 'none', backgroundColor: '#2182a1', color: '#2182a1', padding: '10px 20px', margin: "10px" }}><div style={{ fontFamily: 'Open Sans, sans-serif', fontWeight: 'bold', color: 'white' }}>HOME</div></button>
             </Link>
             <button style={{ borderRadius: '5px', border: 'none', backgroundColor: '#2182a1', color: '#2182a1', padding: '10px 20px', margin: "10px" }}><div onClick={LogoutUser} style={{ fontFamily: 'Open Sans, sans-serif', fontWeight: 'bold', color: 'white' }}>LOGOUT</div></button>
