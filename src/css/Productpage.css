@@ -28,35 +28,45 @@
     margin-bottom: 1rem;
   }
   
+  .btnBack{
+    background-image: url("https://st2.depositphotos.com/1325352/10380/v/600/depositphotos_103804888-stock-illustration-leaf-tree-fresh-green-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
- .addBtn {
-    width: 9em;
-    height: 3em;
-    border-radius: 30em;
-    font-size: 15px;
-    font-family: inherit;
-    border: none;
+  .Addbtn{
+
+    color: #92c394;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid #92c394;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-weight: 900;
+    background: transparent;
     position: relative;
+    transition: all 1s;
     overflow: hidden;
-    z-index: 1;
-    box-shadow: 6px 6px 12px #c5c5c5,
-                -6px -6px 12px #ffffff;
-   }
-   
-   .addBtn::before {
+    z-index: 2;
+  }
+  
+  .Addbtn:hover {
+    color: white;
+  }
+  
+  .Addbtn::before {
     content: '';
-    width: 0;
-    height: 3em;
-    border-radius: 30em;
     position: absolute;
+    height: 100%;
+    width: 0%;
     top: 0;
-    left: 0;
-    background-image: linear-gradient(to right, #0fd850 0%, #f9f047 100%);
-    transition: .5s ease;
-    display: block;
+    left: -40px;
+    transform: skewX(45deg);
+    background-color: #92c394;
     z-index: -1;
-   }
-   
-   .addBtn:hover::before {
-    width: 9em;
-   }
+    transition: all 1s;
+  }
+  
+  .Addbtn:hover::before {
+    width: 160%;
+  }
