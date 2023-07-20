@@ -18,6 +18,7 @@ import Createproduct from './components/Product/Createproduct';
 import CategorySelection from './components/Product/CategorySelection';
 import Geosearchpage from './components/GeoSearch/Geosearchpage';
 import CategoryPage from './components/CategoryPage/CategoryPage';
+import SearchPage from './components/SearchPage/SearchPage';
 
 
 
@@ -39,7 +40,8 @@ function App() {
         <Route path="/authentication" component={Authentication} />
         <Route path="/detailproduct" component={Detailedproduct} />
         <Route path="/dashboard" component={Dashboard} />
-        <Route path="/card" component={Card} />\
+        <Route path="/card" component={Card} />SearchPage
+        <Route path="/searchpage" component={SearchPage} />
         <Route path="/mainproduct" component={MainProducts} />
         <Route path="/sellerhome" component={SellerHome} />
       </Switch>

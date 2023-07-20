@@ -5,10 +5,21 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Loading from './Loading';
 import Navbar from './Navbar/Navbar';
+
+
 function Detailedproduct() {
   const [product, setProduct] = useState(null);
+
+
   const urlSearchParams = new URLSearchParams(window.location.search);
   const id = urlSearchParams.get('id');
+
+
+
+
+
+
+  
   console.log(id); // Output: 6455f94da708ce6b2c0b3700
 
 
