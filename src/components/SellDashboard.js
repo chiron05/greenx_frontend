@@ -56,6 +56,8 @@ const SellDashboard = () => {
       }),
     });
     const result = await response.json();
+    console.log(result);
+    setSellProducts(result.data.getSellerProducts)
     if (result.data.getSellerProducts.length != 0) {
       setStick(true);
     }
@@ -88,7 +90,7 @@ const SellDashboard = () => {
           </div>
         </div>
       </section>
-{/* 
+
       <section style={{ display: "block", paddingTop: "250px"}}>
         <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center" }}>
           <button className='addBtn'> Pick up!</button>
@@ -96,7 +98,7 @@ const SellDashboard = () => {
           <button className='addBtn'> Pick up!</button>
           <button className='addBtn'> Pick up!</button>
         </div>
-      </section> */}
+      </section>
 
 
 
