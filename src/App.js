@@ -13,13 +13,16 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Homepage from './components/Homepage';
 import Card from './components/Card/Card';
 import MainProducts from './components/MainProducts';
-import SellerHome from './components/Seller/SellerHome';
 import Createproduct from './components/Product/Createproduct';
 import CategorySelection from './components/Product/CategorySelection';
 import Geosearchpage from './components/GeoSearch/Geosearchpage';
 import CategoryPage from './components/CategoryPage/CategoryPage';
 import SellDashboard from './components/SellDashboard';
 import Chatbot from './components/Chatbot/Chatbot';
+import EditProducts from './components/Seller/EditProducts';
+import DeleteProduct from './components/Seller/DeleteProduct';
+import Edit from './components/Seller/Edit';
+import Delete from './components/Seller/Delete';
 
 
 
@@ -36,10 +39,14 @@ function App() {
         <Route path="/authentication" component={Authentication} />
         <Route path="/detailproduct" component={Detailedproduct} />
         <Route path="/dashboard" component={Dashboard} />
-        <Route path="/card" component={Card} />SearchPage
+        <Route path="/card" component={Card} />
         <Route path="/chatbot" component={Chatbot} />
         <Route path="/mainproduct" component={MainProducts} />
         <Route path="/sellerdashboard" component={SellDashboard} />
+        <Route path="/editproduct" component={EditProducts} />
+        <Route path="/deleteproduct" component={DeleteProduct} />
+        <Route path="/edit" component={Edit} />
+        <Route path="/delete" component={Delete} />
       </Switch>
 
     </Router>

@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Loading from './Loading';
-import Navbar from './Navbar/Navbar';
+// import NavbarDetailProduct from './Navbar/NavbarDetailProduct';
 import useLocalStorage from "../Hooks/useLocalStorage"
 
 
@@ -131,7 +131,7 @@ const requestOptions = {
   }
   return (
     <div >
-      <Navbar />
+      {/* <NavbarDetailProduct /> */}
       <div>
       <div className="product-card">
         <div className="product-card__image" style={{

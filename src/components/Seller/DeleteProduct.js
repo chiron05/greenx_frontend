@@ -3,11 +3,11 @@ import useLocalStorage from "../../Hooks/useLocalStorage"
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
-import Card2 from '../Card/Card2';
 import NavbarBack from '../Navbar/NavbarBack';
+import Card3 from '../Card/Card3';
 
 
-const EditProducts = () => {
+const DeleteProduct = () => {
   const url = 'https://greenx-backend.onrender.com/graphql';
   const history = useHistory();
   const [products, setProducts] = useState([]);
@@ -49,7 +49,7 @@ const EditProducts = () => {
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
           {(stick) ? <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", flexWrap: "wrap", width: "70%" }}>
             {products.map(product => {
-              return <Card2 key={product._id} id={product._id} name={product.name} description={product.description} image={product.images[0]} price={product.price} ></Card2>
+              return <Card3 key={product._id} id={product._id} name={product.name} description={product.description} image={product.images[0]} price={product.price} ></Card3>
             })}
           </div> :
             <>Empty List....</>
@@ -60,4 +60,4 @@ const EditProducts = () => {
   )
 }
 
-export default EditProducts
+export default DeleteProduct

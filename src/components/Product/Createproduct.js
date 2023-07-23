@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './Createproduct.css'
-import { Image } from 'cloudinary-react';
 import { Cloudinary } from 'cloudinary-core';
 import Swal from 'sweetalert2';
 import { css } from '@emotion/react';
