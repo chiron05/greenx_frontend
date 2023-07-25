@@ -19,7 +19,7 @@ const Geosearchpage = () => {
       body: JSON.stringify({
         query: `
           query {
-            getNearByProductByUserLocation(longitude:73.852844, latitude:15.381424) {
+            getNearByProductByUserLocation(latitude:15.494775,longitude:73.829287) {
               _id
               name
               description
