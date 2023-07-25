@@ -54,8 +54,13 @@ const ProductList = ({ products }) => {
               _id
               name
               description
-              quantity
+              price
+              images
               rating
+              categoryID
+              sellerID
+              pincode
+              city_name
             }
           }
         `;
@@ -166,7 +171,7 @@ const ProductList = ({ products }) => {
         <Grid container spacing={2} style={{ marginLeft: '10px' }}>
           {productList.map((product) => (
             <Grid item xs={12} sm={6} md={4} key={product.id}>
-              <Card id={product._id} name={product.name} description={product.description} image={product.images} price={product.price} prating={product.rating}/>
+              <Card id={product._id} name={product.name} description={product.description} image={product.images[0]} price={product.price} prating={product.rating}/>
             </Grid>
           ))}
         </Grid>
