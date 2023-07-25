@@ -15,7 +15,7 @@ function Detailedproduct() {
   const [userID, setUserID] = useLocalStorage("userID");
   const url = "https://greenx-backend.onrender.com/graphql";
   const [check, setCheck] = useState(false);
-
+  const [sellerID, setSellerID] = useState("");
   const [sellerName, setSellerName] = useState("");
   const [sellerEmail, setSellerEmail] = useState("");
   const [sellerNum, setSellerNum] = useState("");
@@ -82,6 +82,7 @@ function Detailedproduct() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           query: `{getUserById(userId: "${result.data["getProductById"].sellerID}") {
+              _id
               name
               contactnum
               email
@@ -92,6 +93,7 @@ function Detailedproduct() {
         }),
       });
       const result2 = await response2.json();
+      setSellerID(result2.data.getUserById._id)
       setSellerName(result2.data.getUserById.name.toUpperCase());
       setSellerEmail(result2.data.getUserById.email);
       setSellerNum(result2.data.getUserById.contactnum);
@@ -194,16 +196,16 @@ function Detailedproduct() {
   const getStars = () => {
     let stars = [];
     for (let i = 0; i < 5; i++) {
-        if (i < Math.floor(rating)) {
-            stars.push(<span key={i}>&#9733;</span>);
-        } else if (i === Math.floor(rating) && rating % 1 !== 0) {
-            stars.push(<span key={i}>&#9734;</span>);
-        } else {
-            stars.push(<span key={i}>&#9734;</span>);
-        }
+      if (i < Math.floor(rating)) {
+        stars.push(<span key={i}>&#9733;</span>);
+      } else if (i === Math.floor(rating) && rating % 1 !== 0) {
+        stars.push(<span key={i}>&#9734;</span>);
+      } else {
+        stars.push(<span key={i}>&#9734;</span>);
+      }
     }
     return stars;
-}
+  }
 
 
   if (!product) {
@@ -252,9 +254,9 @@ function Detailedproduct() {
           <div className="product-card__info">
             <h2 className="product-card__name">{product.name}</h2>
             <p className="product-card__subheading">{product.description}</p>
-            <h2 className="product-card__quantity" style={{marginBottom:"-5px"}}>Rating</h2>
-            <div style={{ display: 'flex', justifyContent: 'center', color: 'yellow' ,fontSize:"2.5em"}}>
-                {getStars()}
+            <h2 className="product-card__quantity" style={{ marginBottom: "-5px" }}>Rating</h2>
+            <div style={{ display: 'flex', justifyContent: 'center', color: 'yellow', fontSize: "2.5em" }}>
+              {getStars()}
             </div>
             <h3 className="product-card__rate">
               {"Price: " + product.price + "/-"}
@@ -265,18 +267,23 @@ function Detailedproduct() {
             <p className="product-card__quantity">
               {"Quantity: " + product.quantity}
             </p>
-            {check ? (
-              <button
-                className="product-card__button2"
-                onClick={removeWishlist}
-              >
-                WISHLISTED
-              </button>
-            ) : (
-              <button className="product-card__button" onClick={addToWishlist}>
-                Add To Wishlist
-              </button>
-            )}
+            {(sellerID == userID) ? <></> :
+              <>
+                {check ? (
+                  <button
+                    className="product-card__button2"
+                    onClick={removeWishlist}
+                  >
+                    WISHLISTED
+                  </button>
+                ) : (
+                  <button className="product-card__button" onClick={addToWishlist}>
+                    Add To Wishlist
+                  </button>
+                )}
+              </>
+            }
+
           </div>
         </div>
 
@@ -415,22 +422,25 @@ function Detailedproduct() {
               </p>
             </>
           )}
-          <div
-            class="comment-box"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <textarea
-              placeholder="Write your comment here..."
-              onChange={(e) => {
-                setComment(e.target.value);
+
+          {(sellerID == userID) ? <></> :
+            <div
+              class="comment-box"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
               }}
-            ></textarea>
-            <button onClick={submitFeedback}>Submit</button>
-          </div>
+            >
+              <textarea
+                placeholder="Write your comment here..."
+                onChange={(e) => {
+                  setComment(e.target.value);
+                }}
+              ></textarea>
+              <button onClick={submitFeedback}>Submit</button>
+            </div>
+          }
         </div>
       </div>
     </div>

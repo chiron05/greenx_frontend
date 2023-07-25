@@ -54,7 +54,6 @@ function Edit() {
                     description:"${product.description}"
                     quantity:"${product.quantity}"
                     images: ["${product.images.join('","')}"] 
-                    rating:${product.rating}
                     pincode:"${product.pincode}"
                     city_name:"${product.city_name}"
                 }){

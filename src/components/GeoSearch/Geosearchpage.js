@@ -4,6 +4,7 @@ import Geoproduct from './Geoproducts';
 import Geomap from './Geomap';
 import Card from '../Card/Card';
 import Navbar from '../Navbar/Navbar';
+import NavbarDetailProduct from '../Navbar/NavbarDetailProduct';
 
 const Geosearchpage = () => {
   const [products, setProducts] = useState([]);
@@ -31,7 +32,39 @@ const Geosearchpage = () => {
               city_name
             }
           }
-        `
+        `//panaji
+
+        // query: `
+        //   query {
+        //     getNearByProductByUserLocation(latitude:15.014035,longitude:74.085239) {
+        //       _id
+        //       name
+        //       description
+        //       price
+        //       images
+        //       sellerID
+        //       categoryID
+        //       pincode
+        //       city_name
+        //     }
+        //   }
+        // `//canacona
+
+        // query: `
+        //   query {
+        //     getNearByProductByUserLocation(latitude:15.422771,longitude:73.979980) {
+        //       _id
+        //       name
+        //       description
+        //       price
+        //       images
+        //       sellerID
+        //       categoryID
+        //       pincode
+        //       city_name
+        //     }
+        //   }
+        // `//ponda
       })
     })
       .then(response => response.json())
@@ -46,7 +79,8 @@ const Geosearchpage = () => {
 
   return (
     <>
-      <div className="geosearchpage bg-image">
+    <NavbarDetailProduct/>
+      <div className="geosearchpage bg-image" style={{paddingTop:"60px"}}>
         <div className="geo-left-section">
           <Geomap></Geomap>
         </div>

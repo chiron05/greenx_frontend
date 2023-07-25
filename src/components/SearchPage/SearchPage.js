@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Card from '../Card/Card';
 import { useLocation } from 'react-router-dom';
-
+import NavbarDetailProduct from "../Navbar/NavbarDetailProduct"
 const SearchApp = () => {
   const [products, setProducts] = useState([]);
   const location = useLocation();
@@ -29,6 +29,7 @@ const SearchApp = () => {
                 description
                 images
                 price
+                rating
               }
             }
           `,
@@ -36,6 +37,7 @@ const SearchApp = () => {
       });
 
       const { data } = await response.json();
+      console.log(data.getProductByNameAndLocation);
       setProducts(data.getProductByNameAndLocation);
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -43,6 +45,8 @@ const SearchApp = () => {
   };
 
   return (
+    <>
+    <NavbarDetailProduct/>
     <div
       style={{
         display: 'flex',
@@ -50,14 +54,20 @@ const SearchApp = () => {
         justifyContent: 'space-evenly',
       }}
     >
-    
+      {(products.length!=0) ?
+        <div style={{paddingTop:"100px"}}>{products.map((product, index) => (
 
-    {products.map((product, index) => (
-      
-      <Card key={product._id} id={product._id} name={product.name} description={product.description} price={product.price} image={product.images[0]} ></Card>
-      ))}
-        
+          <Card key={product._id} id={product._id} name={product.name} description={product.description} price={product.price} prating={product.rating} image={product.images[0]} ></Card>
+        ))}</div>
+        :
+        <div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"100vh",color:"#92c394"}}>
+          <h1>No Products Available....</h1>
+        </div>}
+
+
+
     </div>
+    </>
   );
 };
 
