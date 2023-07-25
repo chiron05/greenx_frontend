@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import useLocalStorage from "../../Hooks/useLocalStorage"
 
-const Card = ({ id, name, description, image, price }) => {
+const   Card = ({ id, name, description, image, price }) => {
   const [liked, setLiked] = useState(false);
   const [rating, setRating] = useState(3.5);
   const [loggedStatus, setLoggedStatus] = useLocalStorage("loggedStatus")

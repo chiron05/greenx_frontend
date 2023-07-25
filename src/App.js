@@ -22,6 +22,7 @@ import Chatbot from './components/Chatbot/Chatbot';
 import EditProducts from './components/Seller/EditProducts';
 import DeleteProduct from './components/Seller/DeleteProduct';
 import Edit from './components/Seller/Edit';
+import SearchApp from './components/SearchPage/SearchPage';
 
 
 
@@ -32,6 +33,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route path="/advertisement" component={Advertisement} />
+        <Route path="/searchpage" component={SearchApp} />
         <Route path="/geosearchpage" component={Geosearchpage} />
         <Route path="/categorypage" component={CategoryPage} />
         <Route path="/createproduct" component={Createproduct} />

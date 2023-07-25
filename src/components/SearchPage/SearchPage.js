@@ -1,75 +1,64 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Card, CardContent, Typography, Grid } from '@mui/material';
+import Card from '../Card/Card';
+import { useLocation } from 'react-router-dom';
 
-function SearchApp() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [cards, setCards] = useState([]);
-  const [filteredCards , setfilteredCards ] = useState([]);
-
-
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
-  };
+const SearchApp = () => {
+  const [products, setProducts] = useState([]);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const locationParam = queryParams.get('location');
+  const searchFieldParam = queryParams.get('searchfield');
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/graphql', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            query: `
-              query {
-                getProductByNameAndLocation(productName: "apple" pincode: "403401") {
-                  _id
-                  name
-                  description
-                }
-              }
-            `
-          }),
-        });
-
-        const { data } = await response.json();
-        setCards(data.getProductByNameAndLocation);
-        
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
+    fetchProducts();
   }, []);
 
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch('https://greenx-backend.onrender.com/graphql', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          query: `
+            query {
+              getProductByNameAndLocation(productName: "${searchFieldParam}", pincode: "${locationParam}") {
+                _id
+                name
+                description
+                images
+                price
+              }
+            }
+          `,
+        }),
+      });
+
+      const { data } = await response.json();
+      setProducts(data.getProductByNameAndLocation);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
+
   return (
-    <div style={{ padding: '20px' }}>
-      <TextField
-        label="Search"
-        variant="outlined"
-        value={searchTerm}
-        onChange={handleSearch}
-        style={{ marginBottom: '20px' }}
-      />
-      <Grid container spacing={2}>
-        {cards.map((card) => (
-          <Grid item xs={12} sm={6} md={4} key={card._id}>
-            <Card>
-              <CardContent>
-                <Typography variant="h5" component="div">
-                  {card.name}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {card.description}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-evenly',
+      }}
+    >
+    
+
+    {products.map((product, index) => (
+      
+      <Card key={product._id} id={product._id} name={product.name} description={product.description} price={product.price} image={product.images[0]} ></Card>
+      ))}
+        
     </div>
   );
-}
+};
 
 export default SearchApp;
