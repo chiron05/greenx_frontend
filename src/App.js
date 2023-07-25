@@ -22,7 +22,7 @@ import Chatbot from './components/Chatbot/Chatbot';
 import EditProducts from './components/Seller/EditProducts';
 import DeleteProduct from './components/Seller/DeleteProduct';
 import Edit from './components/Seller/Edit';
-import Delete from './components/Seller/Delete';
+
 
 
 
@@ -46,7 +46,6 @@ function App() {
         <Route path="/editproduct" component={EditProducts} />
         <Route path="/deleteproduct" component={DeleteProduct} />
         <Route path="/edit" component={Edit} />
-        <Route path="/delete" component={Delete} />
       </Switch>
 
     </Router>

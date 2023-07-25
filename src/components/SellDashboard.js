@@ -15,9 +15,9 @@ const SellDashboard = () => {
   const [tick, setTick] = useState(false)
   const [stick, setStick] = useState(false)
   const url = 'https://greenx-backend.onrender.com/graphql';
-  const [userName, setUserName] = useLocalStorage("")
-  const [userEmail, setUserEmail] = useLocalStorage("")
-  const [userNum, setUserNum] = useLocalStorage("")
+  const [userName, setUserName] = useState("")
+  const [userEmail, setUserEmail] = useState("")
+  const [userNum, setUserNum] = useState("")
 
   const userDetails = async () => {
     const response = await fetch(url, {
@@ -85,8 +85,8 @@ const SellDashboard = () => {
           <div className="container-main">
             <div className="description" style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "300px", height: "300px" }}>
               <div className="welcome-container" style={{ textAlign: "center" }}>
-                <h1 className='titlehead'>HELLO {userName}</h1>
-                <h1 className='titlehead'>Welcome to GREEN<span style={{ color: "#ff00006d" }}>X</span>!</h1>
+                <h1 className='titlehead typing-animation'>HELLO {userName}</h1>
+                <h1 className='titlehead typing-animation'>Welcome to GREEN<span style={{ color: "#ff00006d" }}>X</span>!</h1>
               </div>
             </div>
             <div className="circle" style={{ width: "500px", height: "500px" }}>
@@ -130,7 +130,7 @@ const SellDashboard = () => {
               return <Card key={product._id} id={product._id} name={product.name} description={product.description} image={product.images[0]} price={product.price} ></Card>
             })}
           </div> :
-            <>Empty List....</>
+            <>Empty....</>
           }
         </div>
       </section>

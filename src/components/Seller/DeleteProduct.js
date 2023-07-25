@@ -27,7 +27,6 @@ const DeleteProduct = () => {
       }),
     });
     const result = await response.json();
-    console.log(result);
     setProducts(result.data.getSellerProducts)
     if (result.data.getSellerProducts.length != 0) {
       setStick(true);
@@ -52,7 +51,7 @@ const DeleteProduct = () => {
               return <Card3 key={product._id} id={product._id} name={product.name} description={product.description} image={product.images[0]} price={product.price} ></Card3>
             })}
           </div> :
-            <>Empty List....</>
+            <>Empty....</>
           }
         </div>
       </section>

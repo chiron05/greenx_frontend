@@ -52,7 +52,7 @@ const EditProducts = () => {
               return <Card2 key={product._id} id={product._id} name={product.name} description={product.description} image={product.images[0]} price={product.price} ></Card2>
             })}
           </div> :
-            <>Empty List....</>
+            <>Empty....</>
           }
         </div>
       </section>

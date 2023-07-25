@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import './Card.css'
 import { Link } from 'react-router-dom';
 import useLocalStorage from "../../Hooks/useLocalStorage"
-
+import { useHistory } from 'react-router-dom';
 const Card3 = ({ id, name, description, image, price }) => {
-    const [liked, setLiked] = useState(false);
+    const history = useHistory();
     const [rating, setRating] = useState(3.5);
     const [loggedStatus, setLoggedStatus] = useLocalStorage("loggedStatus")
-    const toggleLike = () => {
-        setLiked(!liked);
-    }
+
+    const url = 'https://greenx-backend.onrender.com/graphql';
+
 
     const getStars = () => {
         let stars = [];
@@ -23,6 +23,39 @@ const Card3 = ({ id, name, description, image, price }) => {
             }
         }
         return stars;
+    }
+
+    const deleteProduct = async () => {
+
+        const question = "Please enter Product name to confirm delete(" + name + "):"
+        const userInput = prompt(question);
+
+        if (userInput == name) {
+            const requestBody = {
+                query: `
+                mutation {
+                    deleteProduct(productId:"${id}")
+                    }
+                    `,
+                variables: {}
+            };
+
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(requestBody)
+            };
+            const response = await fetch(url, requestOptions);
+            const data = await response.json();
+            alert(data.data.deleteProduct)
+            setTimeout(() => {
+                history.push('/sellerdashboard');
+            }, 1000);
+        } else {
+            setTimeout(() => {
+                alert("Invalid Product Name")
+            }, 1000);
+        }
     }
 
     return (
@@ -42,9 +75,8 @@ const Card3 = ({ id, name, description, image, price }) => {
                         <Link to={`/detailproduct?id=${id}`} style={{ textDecoration: 'none', display: "flex" }}>
                             <div style={{ fontWeight: "500", color: "black", border: "2px dotted black", padding: "5px", borderRadius: "25px" }}>Product Details</div>
                         </Link>
-                        <Link to={`/delete?id=${id}`} style={{ textDecoration: 'none', display: "flex" }}>
-                            <div style={{ fontWeight: "500", color: "black", border: "2px dotted black", padding: "5px", borderRadius: "25px" }}>DELETE</div>
-                        </Link>
+                        <div style={{ fontWeight: "500", color: "black", border: "2px dotted black", padding: "5px", borderRadius: "25px", cursor: "pointer" }} onClick={deleteProduct}>DELETE</div>
+
                     </>
                     :
                     <Link to={`/authentication`} style={{ textDecoration: 'none' }}>
