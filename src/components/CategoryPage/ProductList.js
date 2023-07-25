@@ -8,6 +8,9 @@ const ProductList = ({ products }) => {
   const location = useLocation();
   const [productList, setProductList] = useState([]);
   const prevLocation = useRef(location);
+
+
+
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
   
@@ -33,6 +36,8 @@ const ProductList = ({ products }) => {
               name
               description
               quantity
+              images
+              price
             }
           }
         `;
@@ -55,7 +60,6 @@ const ProductList = ({ products }) => {
           });
       } else {
         // Handle the case when 'location' is not present in the search params
-        console.log("yoooooooooo11")
         const query = `
         query{
           getProductsByCategoryId(categoryID:"${searchParams.get('categoryid')}"){

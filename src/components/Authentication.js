@@ -148,7 +148,7 @@ const Authentication = () => {
                             email: "${useremail}"
                             password: "${userpassword}"
                             contactnum: "${userphnum}"
-                            location:{type: "Point", coordinates: [${longitude},${latitude}]}
+                            location:{type: "Point", coordinates: [${latitude},${longitude}]}
                         }) {
                         _id
                         location{type coordinates}

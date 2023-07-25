@@ -12,7 +12,7 @@ const Geomap = () => {
     const map = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/chiron714/cljzhj4xx007j01pe2zwr0a7k',
-      center: [74.043902, 14.991053],
+      center: [73.829287, 15.494775],
       zoom: 12,
       transition: {
         duration: 500,
@@ -20,10 +20,10 @@ const Geomap = () => {
       attributionControl: false,
     });
 
-    const marker = new Marker().setLngLat([74.043902, 14.991053]).addTo(map);
+    const marker = new Marker().setLngLat([73.829287, 15.487732]).addTo(map);
 
     // Create a circle feature using Turf.js
-    const center = turf.point([74.043902, 14.991053]);
+    const center = turf.point([73.829287, 15.487732]);
     const circle = turf.circle(center, 30, { units: 'kilometers' });
 
     map.on('load', () => {

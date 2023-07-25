@@ -218,7 +218,7 @@ function Detailedproduct() {
             alignItems:"center",
             textAlign:"center",
             color:"#92c394"
-          }}>USER DETAILS</h1>
+          }}>SELLER DETAILS</h1>
         <div
           style={{
             width: "100%",
