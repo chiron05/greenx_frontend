@@ -3,9 +3,9 @@ import './Card.css'
 import { Link } from 'react-router-dom';
 import useLocalStorage from "../../Hooks/useLocalStorage"
 import { useHistory } from 'react-router-dom';
-const Card3 = ({ id, name, description, image, price }) => {
+const Card3 = ({ id, name, description, image, price, prating }) => {
     const history = useHistory();
-    const [rating, setRating] = useState(3.5);
+    const [rating, setRating] = useState(prating);
     const [loggedStatus, setLoggedStatus] = useLocalStorage("loggedStatus")
 
     const url = 'https://greenx-backend.onrender.com/graphql';

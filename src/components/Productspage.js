@@ -9,7 +9,7 @@ const Productspage = () => {
           const response = await fetch('https://greenx-backend.onrender.com/graphql', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ query: '{ getAllProducts { _id name images description price} }' }),
+              body: JSON.stringify({ query: '{ getAllProducts { _id name images description price rating} }' }),
           });
           const result = await response.json();
           setProducts(result.data.getAllProducts);
@@ -22,7 +22,7 @@ const Productspage = () => {
     <h1 style={{ textAlign: 'center' ,color:'#92c394',marginTop:"60px"}}>ALL PRODUCTS</h1>
       <div className="card-container">
         {products.map(product => {
-          return <Card key={product._id} id={product._id} name={product.name} description={product.description} image={product.images[0]} price={product.price} ></Card>
+          return <Card key={product._id} id={product._id} name={product.name} description={product.description} image={product.images[0]} price={product.price} prating={product.rating}></Card>
         })}
       </div>
     </div>

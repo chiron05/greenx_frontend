@@ -28,7 +28,7 @@ const SellDashboard = () => {
           name
           contactnum
           email
-          bookmarks{_id name images description price}
+          bookmarks{_id name images description price rating}
       }
     }` ,
         variables: {}
@@ -51,7 +51,7 @@ const SellDashboard = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         query: `{getSellerProducts(userId: "${userID}") {
-          _id name images description price
+          _id name images description price rating
       }
     }` ,
         variables: {}
@@ -127,7 +127,7 @@ const SellDashboard = () => {
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
           {(stick) ? <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", flexWrap: "wrap", width: "70%" }}>
             {sellproducts.map(product => {
-              return <Card key={product._id} id={product._id} name={product.name} description={product.description} image={product.images[0]} price={product.price} ></Card>
+              return <Card key={product._id} id={product._id} name={product.name} description={product.description} image={product.images[0]} price={product.price} prating={product.rating}></Card>
             })}
           </div> :
             <>Empty....</>
@@ -144,7 +144,7 @@ const SellDashboard = () => {
           <h1 style={{ textAlign: 'center', color: '#92c394', marginTop: "60px",fontWeight:"500",fontSize:"3em" }}>YOUR WISHLIST</h1>
           {(tick) ? <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", flexWrap: "wrap", width: "70%" }}>
             {products.map(product => {
-              return <Card key={product._id} id={product._id} name={product.name} description={product.description} image={product.images[0]} price={product.price} ></Card>
+              return <Card key={product._id} id={product._id} name={product.name} description={product.description} image={product.images[0]} price={product.price} prating={product.rating}></Card>
             })}
           </div> :
             <>Empty List....</>
