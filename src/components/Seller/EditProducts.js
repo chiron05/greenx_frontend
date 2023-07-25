@@ -20,7 +20,7 @@ const EditProducts = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         query: `{getSellerProducts(userId: "${userID}") {
-          _id name images description price
+          _id name images description price rating
       }
     }` ,
         variables: {}
@@ -49,7 +49,7 @@ const EditProducts = () => {
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
           {(stick) ? <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", flexWrap: "wrap", width: "70%" }}>
             {products.map(product => {
-              return <Card2 key={product._id} id={product._id} name={product.name} description={product.description} image={product.images[0]} price={product.price} ></Card2>
+              return <Card2 key={product._id} id={product._id} name={product.name} description={product.description} image={product.images[0]} price={product.price} prating={product.rating} ></Card2>
             })}
           </div> :
             <>Empty....</>

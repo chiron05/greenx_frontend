@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 import useLocalStorage from "../../Hooks/useLocalStorage"
 
-const Card2 = ({ id, name, description, image, price }) => {
+const Card2 = ({ id, name, description, image, price ,prating}) => {
     const [liked, setLiked] = useState(false);
-    const [rating, setRating] = useState(3.5);
+    const [rating, setRating] = useState(prating);
     const [loggedStatus, setLoggedStatus] = useLocalStorage("loggedStatus")
     const toggleLike = () => {
         setLiked(!liked);

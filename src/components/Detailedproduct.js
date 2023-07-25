@@ -5,11 +5,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Loading from "./Loading";
 import useLocalStorage from "../Hooks/useLocalStorage";
-
+import { useHistory } from 'react-router-dom';
 
 function Detailedproduct() {
   const [product, setProduct] = useState(null);
-
+  const history = useHistory();
   const urlSearchParams = new URLSearchParams(window.location.search);
   const id = urlSearchParams.get("id");
   const [userID, setUserID] = useLocalStorage("userID");
@@ -22,7 +22,7 @@ function Detailedproduct() {
   const [selleraddress, setSellerAddress] = useState("");
 
   const [comment, setComment] = useState("")
-
+  const [rating, setRating] = useState(0);
   const userDetails = async () => {
     const response = await fetch(url, {
       method: "POST",
@@ -68,6 +68,7 @@ function Detailedproduct() {
           images
           pincode
           city_name
+          rating
           feedbacks{feedbackId rating comment}
         }
       }`,
@@ -76,6 +77,7 @@ function Detailedproduct() {
       const result = await response.json();
       console.log(result);
       setProduct(result.data["getProductById"]);
+      setRating(result.data["getProductById"].rating)
 
       const response2 = await fetch(url, {
         method: "POST",
@@ -158,7 +160,7 @@ function Detailedproduct() {
 
   const submitFeedback = async () => {
     if (comment == "") {
-
+      alert("Empty Comment!")
     }
     else {
       const requestBody = {
@@ -184,12 +186,27 @@ function Detailedproduct() {
       const response = await fetch(url, requestOptions);
       const data = await response.json();
       console.log(data);
+      setComment("")
+      alert("Comment Added!")
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     }
-    // setComment("")
-    // alert("Comment Added!")
   }
 
-
+  const getStars = () => {
+    let stars = [];
+    for (let i = 0; i < 5; i++) {
+        if (i < Math.floor(rating)) {
+            stars.push(<span key={i}>&#9733;</span>);
+        } else if (i === Math.floor(rating) && rating % 1 !== 0) {
+            stars.push(<span key={i}>&#9734;</span>);
+        } else {
+            stars.push(<span key={i}>&#9734;</span>);
+        }
+    }
+    return stars;
+}
 
 
   if (!product) {
@@ -240,6 +257,10 @@ function Detailedproduct() {
           <div className="product-card__info">
             <h2 className="product-card__name">{product.name}</h2>
             <p className="product-card__subheading">{product.description}</p>
+            <h2 className="product-card__quantity" style={{marginBottom:"-5px"}}>Rating</h2>
+            <div style={{ display: 'flex', justifyContent: 'center', color: 'yellow' ,fontSize:"2.5em"}}>
+                {getStars()}
+            </div>
             <h3 className="product-card__rate">
               {"Price: " + product.price + "/-"}
             </h3>
