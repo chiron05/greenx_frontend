@@ -31,7 +31,7 @@ const ProductList = ({ products }) => {
     setCatData(result.data.getCategoryById)
   }
 
-
+  
   useEffect(() => {
     getCategoryDetails();
     if (searchParams.toString() !== prevLocation.current.search) {

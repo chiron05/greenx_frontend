@@ -23,6 +23,9 @@ import EditProducts from './components/Seller/EditProducts';
 import DeleteProduct from './components/Seller/DeleteProduct';
 import Edit from './components/Seller/Edit';
 import SearchApp from './components/SearchPage/SearchPage';
+import Footer from './components/Footer';
+import Layout from './components/Layout';
+
 
 
 
@@ -49,8 +52,8 @@ function App() {
         <Route path="/deleteproduct" component={DeleteProduct} />
         <Route path="/edit" component={Edit} />
       </Switch>
-
     </Router>
+    
   );
 }
 
