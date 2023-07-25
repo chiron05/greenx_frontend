@@ -85,8 +85,8 @@ const SellDashboard = () => {
           <div className="container-main">
             <div className="description" style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "300px", height: "300px" }}>
               <div className="welcome-container" style={{ textAlign: "center" }}>
-                <h1 className='titlehead typing-animation'>HELLO {userName}</h1>
-                <h1 className='titlehead typing-animation'>Welcome to GREEN<span style={{ color: "#ff00006d" }}>X</span>!</h1>
+                <h1 className='titlehead typing-animation' style={{fontFamily: 'Open Sans, sans-serif'}}>HELLO {userName}</h1>
+                <h1 className='titlehead typing-animation' style={{fontFamily: 'Open Sans, sans-serif'}}>Welcome to GREEN<span style={{ color: "#ff00006d" }}>X</span>!</h1>
               </div>
             </div>
             <div className="circle" style={{ width: "500px", height: "500px" }}>
@@ -102,16 +102,16 @@ const SellDashboard = () => {
 
 
       <section id='inventorymanagement' style={{ display: "flex", paddingTop: "200px", flexDirection: "column", justifyContent: "space-around", alignItems: "center" }}>
-        <h1 style={{ textAlign: 'center', color: '#92c394', marginTop: "60px", marginBottom: "60px" }}>Inventory</h1>
+        <h1 style={{ textAlign: 'center', color: '#92c394', marginTop: "60px", marginBottom: "60px",fontWeight:"500",fontSize:"3em" }}>INVENTORY</h1>
         <div className="btnBack" style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center", width:"80%"}}>
           <div  style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", width: "50%", height: "60vh"}}>
-            <button class="Addbtn" style={{margin:"20px 30px"}} onClick={()=>{history.push('/CategorySelection')}}>
+            <button class="Addbtn" style={{margin:"20px 30px", width:"200px"}} onClick={()=>{history.push('/CategorySelection')}}>
             ADD PRODUCT
             </button>
-            <button class="Addbtn" style={{margin:"20px 30px"}} onClick={()=>{history.push('/editproduct')}}>
+            <button class="Addbtn" style={{margin:"20px 30px",width:"200px"}} onClick={()=>{history.push('/editproduct')}}>
             EDIT PRODUCT
             </button>
-            <button class="Addbtn" style={{margin:"20px 30px"}} onClick={()=>{history.push('/deleteproduct')}}>
+            <button class="Addbtn" style={{margin:"20px 30px",width:"200px"}} onClick={()=>{history.push('/deleteproduct')}}>
             DELETE PRODUCT
             </button>
           </div>
@@ -123,7 +123,7 @@ const SellDashboard = () => {
         </div>
       </section>
       <section style={{ display: "block", paddingTop: "0px", paddingBottom: "0px" }}>
-      <h1 style={{ textAlign: 'center', color: '#92c394', marginTop: "60px"}}>Listed Products</h1>
+      <h1 style={{ textAlign: 'center', color: '#92c394', marginTop: "60px",fontWeight:"500",fontSize:"3em"}}>LISTED PRODUCTS</h1>
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
           {(stick) ? <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", flexWrap: "wrap", width: "70%" }}>
             {sellproducts.map(product => {
@@ -141,7 +141,7 @@ const SellDashboard = () => {
 
       <section id='wishlist' style={{ display: "block", paddingTop: "100px",paddingBottom:"100px" }}>
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-          <h1 style={{ textAlign: 'center', color: '#92c394', marginTop: "60px" }}>Your Wislist</h1>
+          <h1 style={{ textAlign: 'center', color: '#92c394', marginTop: "60px",fontWeight:"500",fontSize:"3em" }}>YOUR WISHLIST</h1>
           {(tick) ? <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", flexWrap: "wrap", width: "70%" }}>
             {products.map(product => {
               return <Card key={product._id} id={product._id} name={product.name} description={product.description} image={product.images[0]} price={product.price} prating={product.rating}></Card>
