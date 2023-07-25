@@ -4,8 +4,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Loading from '../Loading';
-import useLocalStorage from "../../Hooks/useLocalStorage"
-import { log } from '@tensorflow/tfjs';
+
+
 
 
 
@@ -13,7 +13,6 @@ function Edit() {
     const [product, setProduct] = useState(null);
     const urlSearchParams = new URLSearchParams(window.location.search);
     const id = urlSearchParams.get('id');
-    const [userID, setUserID] = useLocalStorage("userID")
     const url = 'https://greenx-backend.onrender.com/graphql';
 
 
