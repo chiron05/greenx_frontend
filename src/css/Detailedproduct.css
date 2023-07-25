@@ -185,7 +185,7 @@
   .comment-box textarea {
     width: 100%;
     min-height: 100px;
-    resize: vertical; /* Allow vertical resizing of the textarea */
+    resize: vertical; 
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 5px;

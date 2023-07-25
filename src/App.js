@@ -49,7 +49,6 @@ function App() {
         <Route path="/deleteproduct" component={DeleteProduct} />
         <Route path="/edit" component={Edit} />
       </Switch>
-
     </Router>
   );
 }
