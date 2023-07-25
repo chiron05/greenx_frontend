@@ -6,7 +6,6 @@ import "slick-carousel/slick/slick-theme.css";
 import Loading from "./Loading";
 import useLocalStorage from "../Hooks/useLocalStorage";
 
-
 function Detailedproduct() {
   const [product, setProduct] = useState(null);
 
@@ -21,7 +20,7 @@ function Detailedproduct() {
   const [sellerNum, setSellerNum] = useState("");
   const [selleraddress, setSellerAddress] = useState("");
 
-  const [comment, setComment] = useState("")
+  const [comment, setComment] = useState("");
 
   const userDetails = async () => {
     const response = await fetch(url, {
@@ -48,8 +47,6 @@ function Detailedproduct() {
       setCheck(false);
     }
   };
-
-
 
   useEffect(() => {
     userDetails();
@@ -101,9 +98,8 @@ function Detailedproduct() {
         setSellerAddress(result2.data.getUserById.address.trim());
       }
     };
-    fetchProducts()
+    fetchProducts();
   }, []);
-
 
   const addToWishlist = async () => {
     const requestBody = {
@@ -158,9 +154,7 @@ function Detailedproduct() {
 
   const submitFeedback = async () => {
     if (comment == "") {
-
-    }
-    else {
+    } else {
       const requestBody = {
         query: `
         mutation {
@@ -187,10 +181,7 @@ function Detailedproduct() {
     }
     // setComment("")
     // alert("Comment Added!")
-  }
-
-
-
+  };
 
   if (!product) {
     return <Loading></Loading>;
@@ -220,17 +211,15 @@ function Detailedproduct() {
             >
               {product.images.map((imges, index) => {
                 return (
-                  <div style={{ width: "400px", height: "400px" }}>
+                  <div style={{ width: "600px", height: "600px" }}>
                     <img
                       src={imges}
-                      style={{
-                        objectFit: "cover",
-                        height: "75vh",
-                        width: "32vw",
-                        borderRadius: "10px",
-                        border: "30px solid #2182a1",
-                      }}
                       alt={`ProductImage${index + 1}`}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
                     />
                   </div>
                 );
@@ -264,13 +253,16 @@ function Detailedproduct() {
           </div>
         </div>
 
-
-        <h1 style={{
+        <h1
+          style={{
             marginTop: "300px",
-            alignItems:"center",
-            textAlign:"center",
-            color:"#92c394"
-          }}>SELLER DETAILS</h1>
+            alignItems: "center",
+            textAlign: "center",
+            color: "#92c394",
+          }}
+        >
+          SELLER DETAILS
+        </h1>
         <div
           style={{
             width: "100%",
@@ -280,7 +272,6 @@ function Detailedproduct() {
             justifyContent: "space-evenly",
           }}
         >
-
           <div style={{ width: "40%" }}>
             <img
               src="https://static.vecteezy.com/system/resources/thumbnails/017/637/549/small_2x/kind-farmer-on-the-background-of-his-farm-barn-and-farmer-s-house-flat-illustration-vector.jpg"
@@ -298,15 +289,23 @@ function Detailedproduct() {
           >
             <div class="carduser">
               <div class="carduser-header">
-                <span style={{ fontFamily: 'Open Sans, sans-serif' }}>{sellerName}</span>
-                <span style={{ fontFamily: 'Open Sans, sans-serif' }}>Location: {selleraddress}</span>
+                <span style={{ fontFamily: "Open Sans, sans-serif" }}>
+                  {sellerName}
+                </span>
+                <span style={{ fontFamily: "Open Sans, sans-serif" }}>
+                  Location: {selleraddress}
+                </span>
 
-                <span style={{ fontFamily: 'Open Sans, sans-serif' }}></span>
+                <span style={{ fontFamily: "Open Sans, sans-serif" }}></span>
               </div>
               <br />
               <div class="carduser-header">
-                <span style={{ fontFamily: 'Open Sans, sans-serif' }}>Phone Number: {sellerNum}</span>
-                <span style={{ fontFamily: 'Open Sans, sans-serif' }}>Email: {sellerEmail}</span>
+                <span style={{ fontFamily: "Open Sans, sans-serif" }}>
+                  Phone Number: {sellerNum}
+                </span>
+                <span style={{ fontFamily: "Open Sans, sans-serif" }}>
+                  Email: {sellerEmail}
+                </span>
                 <div class="contact-buttons">
                   <a
                     href={`https://api.whatsapp.com/send?phone=${sellerNum.trim()}`}
@@ -332,9 +331,6 @@ function Detailedproduct() {
           </div>
         </div>
 
-
-
-
         <div
           style={{
             width: "100%",
@@ -345,28 +341,70 @@ function Detailedproduct() {
             flexDirection: "column",
           }}
         >
-
-          {(product.feedbacks.length != 0) ? <>
-            <div style={{ textAlign: 'center', color: '#92c394', marginBottom: "60px", fontSize: "2em", fontWeight: "500" }}>Comments({product.feedbacks.length})</div>
-            <div style={{ width: "80%", height: "auto", display: "flex", flexDirection: "column", alignItems: "center" }}>
-              {product.feedbacks.map((data, key) =>
-                <p className="message-box" key={key}>&gt;&nbsp;&nbsp; &nbsp;{data.comment}</p>
-              )}
-            </div>
-
-          </> : <>
-          
-            <div style={{ textAlign: 'center', color: '#92c394', marginBottom: "60px", fontSize: "2em", fontWeight: "500" }}>Comments({product.feedbacks.length})</div>
-            <p className="message-box" style={{textAlign:"center"}}>No Comments Posted....</p>
-          </>}
-          <div class="comment-box" style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
-            <textarea placeholder="Write your comment here..." onChange={(e) => { setComment(e.target.value) }}></textarea>
+          {product.feedbacks.length != 0 ? (
+            <>
+              <div
+                style={{
+                  textAlign: "center",
+                  color: "#92c394",
+                  marginBottom: "60px",
+                  fontSize: "2em",
+                  fontWeight: "500",
+                }}
+              >
+                Comments({product.feedbacks.length})
+              </div>
+              <div
+                style={{
+                  width: "80%",
+                  height: "auto",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                {product.feedbacks.map((data, key) => (
+                  <p className="message-box" key={key}>
+                    &gt;&nbsp;&nbsp; &nbsp;{data.comment}
+                  </p>
+                ))}
+              </div>
+            </>
+          ) : (
+            <>
+              <div
+                style={{
+                  textAlign: "center",
+                  color: "#92c394",
+                  marginBottom: "60px",
+                  fontSize: "2em",
+                  fontWeight: "500",
+                }}
+              >
+                Comments({product.feedbacks.length})
+              </div>
+              <p className="message-box" style={{ textAlign: "center" }}>
+                No Comments Posted....
+              </p>
+            </>
+          )}
+          <div
+            class="comment-box"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <textarea
+              placeholder="Write your comment here..."
+              onChange={(e) => {
+                setComment(e.target.value);
+              }}
+            ></textarea>
             <button onClick={submitFeedback}>Submit</button>
           </div>
         </div>
-
-
-
       </div>
     </div>
   );
