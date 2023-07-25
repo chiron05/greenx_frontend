@@ -24,9 +24,9 @@ function Navbar() {
         <span ><a href='#category' style={{ marginRight: '30px', fontFamily: 'Open Sans, sans-serif', fontWeight: 'bold', color: '#546360', cursor: 'pointer', textDecoration: 'none' }}>
           CATEGORY
         </a></span>
-        <span ><a href='#join' style={{ marginRight: '30px', fontFamily: 'Open Sans, sans-serif', fontWeight: 'bold', color: '#546360', cursor: 'pointer', textDecoration: 'none' }}>
+        {(loggedStatus)?<></>:<span ><a href='#join' style={{ marginRight: '30px', fontFamily: 'Open Sans, sans-serif', fontWeight: 'bold', color: '#546360', cursor: 'pointer', textDecoration: 'none' }}>
           JOIN US
-        </a></span>
+        </a></span>}
         <span ><a href='#products' style={{ marginRight: '30px', fontFamily: 'Open Sans, sans-serif', fontWeight: 'bold', color: '#546360', cursor: 'pointer', textDecoration: 'none' }}>
           POPULAR PRODUCTS
         </a></span>

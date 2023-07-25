@@ -17,10 +17,10 @@ const Authentication = () => {
     const [details, setDetails] = useState({
         email: "", password: "", phnum: "", username: ""
     });
-    const useremail = details.email.trim();
-    const userpassword = details.password.trim();
-    const userphnum = details.phnum.trim();
-    const username = details.username.trim();
+    const useremail = details.email;
+    const userpassword = details.password;
+    const userphnum = details.phnum;
+    const username = details.username;
     const [errmsg, setErrmsg] = useState("");
     var validRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     var validRegex2 = /[0-9]/;
@@ -185,6 +185,9 @@ const Authentication = () => {
                     wrapper.style.display = "none";
                     succesfulLog.style.display="none"
                     succesfulReg.style.display="block"
+                    setTimeout(()=>{
+                        loginUser();
+                    },2000)
                 }
                 
 
@@ -263,8 +266,7 @@ const Authentication = () => {
                                 <p style={{fontSize:"40px"}}>✅</p>
                             </div>
                             <div class="flip-card-back">
-                                <p class="title" onClick={loginUser}>Click here to LogIn</p>
-                                <p onClick={backtoAuth}>back</p>
+                                <p class="title">Logging you to GreenX!</p>
                             </div>
                         </div>
                     </div>
