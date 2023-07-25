@@ -172,3 +172,45 @@
     line-height: 135%;
     color: rgba(87, 77, 51, 0.33);
   }
+
+  .comment-box {
+    width: 60%; 
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .comment-box textarea {
+    width: 100%;
+    min-height: 100px;
+    resize: vertical; /* Allow vertical resizing of the textarea */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .comment-box button {
+    background-color: #92c394;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+
+  .message-box {
+    position: relative;
+    width: 80%;
+    background-color: #92c394;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+  }
+  
