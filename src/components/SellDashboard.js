@@ -166,7 +166,7 @@ const SellDashboard = () => {
             </h3>
             <h3 className="product-card__location" style={{ marginLeft: "-155px" }}>Email<input type="text" class="plain-input" style={{ marginLeft: "98px" }} value={userEmail} placeholder="Enter text here" onChange={(e) => { setUserEmail(e.target.value) }} />
             </h3>
-            <h3 className="product-card__location" style={{ marginLeft: "-60px" }}>Phone Number<input type="text" class="plain-input" style={{ marginLeft: "58px" }} value={userNum} placeholder="Enter text here" onChange={(e) => { setUserNum(e.target.value) }} />
+            <h3 className="product-card__location" style={{ marginLeft: "-150px" }}>Phone <input type="text" class="plain-input" style={{ marginLeft: "76px" }} value={userNum} placeholder="Enter text here" onChange={(e) => { setUserNum(e.target.value) }} />
             </h3>
             <h3 className="product-card__location" style={{ marginTop: "30px", marginLeft: "5px" }}>Bio<br /><textarea style={{ margin: "20px , 0px", resize: "none" }} class="plain-input2" value={userBio} placeholder="Tell us something about yourself..." onChange={(e) => { setUserBio(e.target.value) }} /></h3>
             <div style={{ color: 'red', fontSize: "15px", display: "block", marginBottom: "10px" }}>{errmsg}</div>
